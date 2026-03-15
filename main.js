@@ -1,9 +1,13 @@
 // ======== LOADER ========
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("loader").classList.add("hidden");
-  }, 2200);
-});
+function hideLoader() {
+  const loader = document.getElementById("loader");
+  if (loader && !loader.classList.contains("hidden")) {
+    loader.classList.add("hidden");
+  }
+}
+window.addEventListener("load", () => setTimeout(hideLoader, 2200));
+// Fallback: force-hide after 3s even if resources fail to load
+setTimeout(hideLoader, 3000);
 
 // ======== CUSTOM CURSOR ========
 const cursor = document.getElementById("cursor");
@@ -47,7 +51,8 @@ hero.addEventListener("mousemove", (e) => {
   const rect = hero.getBoundingClientRect();
   const x = e.clientX - rect.left - 300;
   const y = e.clientY - rect.top - 300;
-  heroGlow.style.transform = `translate(${x}px, ${y}px)`;
+  heroGlow.style.left = x + "px";
+  heroGlow.style.top = y + "px";
 });
 
 // ======== HERO PARTICLES ========
