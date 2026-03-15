@@ -133,8 +133,9 @@ nav {
   text-decoration: none;
 }
 .nav-logo-icon {
-  width: 36px;
-  height: 36px;
+  width: 72px;
+  height: 72px;
+  mix-blend-mode: screen;
 }
 .nav-logo-text {
   font-family: var(--font-mono);
@@ -591,10 +592,11 @@ section {
   white-space: nowrap;
 }
 .about-visual-icon {
-  width: 120px;
-  height: 120px;
+  width: 220px;
+  height: 220px;
   position: relative;
   z-index: 1;
+  mix-blend-mode: screen;
 }
 .about-visual-icon svg {
   width: 100%;
