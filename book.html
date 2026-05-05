@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Call — Greenlight Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink:  #F2B8CB;
+  --green: #A3E87A;
+  --navy:  #12142A;
+  --cream: #F7F2EE;
+  --font:  'Funnel Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  font-weight: 700;
+  background: var(--cream);
+  color: var(--navy);
+  min-height: 100vh;
+}
+
+/* NAV */
+.book-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(20px, 5vw, 60px);
+  height: 72px;
+  background: rgba(247,242,238,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(18,20,42,0.08);
+}
+.book-nav-logo {
+  font-size: 18px; font-weight: 800; color: var(--navy);
+  text-decoration: none; letter-spacing: -.02em;
+}
+.book-nav-logo em { color: var(--green); font-style: normal; }
+.book-nav-back {
+  font-size: 13px; font-weight: 700; color: var(--navy);
+  text-decoration: none; opacity: .55;
+  transition: opacity .2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.book-nav-back:hover { opacity: 1; }
+
+/* LAYOUT */
+.book-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* LEFT PANEL */
+.book-left {
+  background: var(--navy);
+  padding: clamp(100px, 14vh, 140px) clamp(40px, 6vw, 80px) 60px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: sticky; top: 0; height: 100vh;
+  overflow: hidden;
+}
+.book-left-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.book-left-blob-1 {
+  width: 320px; height: 320px;
+  background: rgba(163,232,122,.15);
+  top: -60px; right: -80px;
+}
+.book-left-blob-2 {
+  width: 240px; height: 240px;
+  background: rgba(242,184,203,.1);
+  bottom: 40px; left: -60px;
+}
+.book-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--green);
+  margin-bottom: 20px;
+}
+.book-heading {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 800; line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+.book-heading em {
+  color: var(--green); font-style: normal;
+  display: block;
+}
+.book-desc {
+  font-size: 15px; font-weight: 500;
+  color: rgba(247,242,238,.55);
+  line-height: 1.6; max-width: 360px;
+  margin-bottom: 48px;
+}
+.book-steps {
+  display: flex; flex-direction: column; gap: 0;
+}
+.book-step-row {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(247,242,238,.08);
+}
+.book-step-row:last-child { border-bottom: 1px solid rgba(247,242,238,.08); }
+.book-step-num {
+  font-size: 11px; font-weight: 700; color: var(--green);
+  opacity: .7; min-width: 24px; padding-top: 2px;
+}
+.book-step-label {
+  font-size: 14px; font-weight: 600; color: rgba(247,242,238,.65);
+}
+
+/* RIGHT PANEL */
+.book-right {
+  padding: clamp(100px, 14vh, 140px) clamp(40px, 6vw, 80px) 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.book-form-title {
+  font-size: 22px; font-weight: 800; color: var(--navy);
+  margin-bottom: 6px;
+}
+.book-form-sub {
+  font-size: 14px; font-weight: 500; color: rgba(18,20,42,.45);
+  margin-bottom: 40px;
+}
+
+/* FORM */
+.book-form { display: flex; flex-direction: column; gap: 24px; }
+.bfield { display: flex; flex-direction: column; gap: 8px; }
+.bfield label {
+  font-size: 11px; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--navy);
+}
+.bfield input[type=text],
+.bfield input[type=email] {
+  padding: 15px 18px;
+  border: 2px solid rgba(18,20,42,.15);
+  border-radius: 12px;
+  background: #fff;
+  font-family: var(--font); font-size: 15px; font-weight: 600;
+  color: var(--navy); outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.bfield input:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 4px rgba(18,20,42,.06);
+}
+.bfield input.error { border-color: #e05252; }
+
+/* Checkboxes */
+.bcheckboxes {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.bcheck {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 15px; border-radius: 10px; cursor: pointer;
+  border: 2px solid rgba(18,20,42,.12); background: #fff;
+  font-size: 13px; font-weight: 600; color: var(--navy);
+  transition: border-color .2s, background .2s;
+  user-select: none;
+}
+.bcheck input { display: none; }
+.bcheck-box {
+  width: 16px; height: 16px; flex-shrink: 0;
+  border-radius: 5px; border: 2px solid rgba(18,20,42,.2);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, border-color .2s;
+}
+.bcheck input:checked ~ .bcheck-box {
+  background: var(--green); border-color: var(--green);
+}
+.bcheck input:checked ~ .bcheck-box::after {
+  content: '✓'; font-size: 10px; color: var(--navy); font-weight: 900;
+}
+.bcheck:has(input:checked) {
+  border-color: var(--navy);
+  background: rgba(163,232,122,.1);
+}
+
+/* Radios */
+.bradios { display: flex; flex-direction: column; gap: 8px; }
+.bradio {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 16px; border-radius: 10px; cursor: pointer;
+  border: 2px solid rgba(18,20,42,.12); background: #fff;
+  font-size: 14px; font-weight: 600; color: var(--navy);
+  transition: border-color .2s, background .2s;
+  user-select: none;
+}
+.bradio input { display: none; }
+.bradio-dot {
+  width: 16px; height: 16px; flex-shrink: 0; border-radius: 50%;
+  border: 2px solid rgba(18,20,42,.2);
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s;
+}
+.bradio input:checked ~ .bradio-dot {
+  border-color: var(--navy);
+  background: var(--navy);
+  box-shadow: inset 0 0 0 3px var(--cream);
+}
+.bradio:has(input:checked) {
+  border-color: var(--navy);
+  background: rgba(18,20,42,.04);
+}
+
+/* Submit */
+.book-submit {
+  margin-top: 8px;
+  padding: 18px 40px;
+  background: var(--green); color: var(--navy);
+  border: none; border-radius: 999px;
+  font-family: var(--font); font-size: 16px; font-weight: 800;
+  cursor: pointer; transition: transform .15s, box-shadow .15s, background .2s;
+  align-self: flex-start;
+}
+.book-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(163,232,122,.4);
+}
+.book-submit:active { transform: translateY(0); }
+
+/* Error message */
+.book-error {
+  font-size: 13px; font-weight: 600; color: #e05252;
+  display: none; margin-top: -8px;
+}
+.book-error.visible { display: block; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .book-page { grid-template-columns: 1fr; }
+  .book-left {
+    position: static; height: auto;
+    padding: 100px 28px 48px;
+  }
+  .book-right { padding: 40px 28px 80px; }
+  .bcheckboxes { grid-template-columns: 1fr; }
+  .book-steps { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="book-nav">
+  <a href="index.html" class="book-nav-logo">greenlight<em>digital</em></a>
+  <a href="index.html" class="book-nav-back">← Back to site</a>
+</nav>
+
+<div class="book-page">
+
+  <!-- LEFT -->
+  <div class="book-left">
+    <div class="book-left-blob book-left-blob-1"></div>
+    <div class="book-left-blob book-left-blob-2"></div>
+    <p class="book-eyebrow">Book a call</p>
+    <h1 class="book-heading">Let's make<br>something<em>great.</em></h1>
+    <p class="book-desc">Tell us a bit about yourself and what you're looking for — then pick a time that works for you.</p>
+    <div class="book-steps">
+      <div class="book-step-row"><span class="book-step-num">01</span><span class="book-step-label">Fill in your details</span></div>
+      <div class="book-step-row"><span class="book-step-num">02</span><span class="book-step-label">Tell us about your project</span></div>
+      <div class="book-step-row"><span class="book-step-num">03</span><span class="book-step-label">Pick a time on our calendar</span></div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="book-right">
+    <h2 class="book-form-title">A few quick questions</h2>
+    <p class="book-form-sub">Takes less than 2 minutes. We'll see you on the call.</p>
+
+    <form class="book-form" id="bookForm" novalidate>
+
+      <div class="bfield">
+        <label for="f-name">Your name</label>
+        <input type="text" id="f-name" placeholder="Jane Smith" autocomplete="name" />
+      </div>
+
+      <div class="bfield">
+        <label for="f-email">Email address</label>
+        <input type="email" id="f-email" placeholder="jane@company.com" autocomplete="email" />
+      </div>
+
+      <div class="bfield">
+        <label for="f-company">Company name</label>
+        <input type="text" id="f-company" placeholder="Acme Inc." />
+      </div>
+
+      <div class="bfield">
+        <label>Services you're interested in</label>
+        <div class="bcheckboxes">
+          <label class="bcheck">
+            <input type="checkbox" value="Social Media Management">
+            <span class="bcheck-box"></span>Social Media
+          </label>
+          <label class="bcheck">
+            <input type="checkbox" value="Content Creation">
+            <span class="bcheck-box"></span>Content Creation
+          </label>
+          <label class="bcheck">
+            <input type="checkbox" value="Paid Advertising">
+            <span class="bcheck-box"></span>Paid Advertising
+          </label>
+          <label class="bcheck">
+            <input type="checkbox" value="Brand Strategy">
+            <span class="bcheck-box"></span>Brand Strategy
+          </label>
+          <label class="bcheck">
+            <input type="checkbox" value="Web Design">
+            <span class="bcheck-box"></span>Web Design
+          </label>
+          <label class="bcheck">
+            <input type="checkbox" value="SEO & Analytics">
+            <span class="bcheck-box"></span>SEO &amp; Analytics
+          </label>
+        </div>
+      </div>
+
+      <div class="bfield">
+        <label>How did you hear about us?</label>
+        <div class="bradios">
+          <label class="bradio">
+            <input type="radio" name="heard" value="Google Search">
+            <span class="bradio-dot"></span>Google Search
+          </label>
+          <label class="bradio">
+            <input type="radio" name="heard" value="Instagram / Social Media">
+            <span class="bradio-dot"></span>Instagram / Social Media
+          </label>
+          <label class="bradio">
+            <input type="radio" name="heard" value="Referral">
+            <span class="bradio-dot"></span>Referral from a friend
+          </label>
+          <label class="bradio">
+            <input type="radio" name="heard" value="Word of mouth">
+            <span class="bradio-dot"></span>Word of mouth
+          </label>
+          <label class="bradio">
+            <input type="radio" name="heard" value="Other">
+            <span class="bradio-dot"></span>Other
+          </label>
+        </div>
+      </div>
+
+      <p class="book-error" id="bookError">Please fill in your name and email before continuing.</p>
+
+      <button type="submit" class="book-submit">Pick a time →</button>
+
+    </form>
+  </div>
+</div>
+
+<script>
+document.getElementById('bookForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name  = document.getElementById('f-name');
+  const email = document.getElementById('f-email');
+  const err   = document.getElementById('bookError');
+
+  name.classList.remove('error');
+  email.classList.remove('error');
+  err.classList.remove('visible');
+
+  let valid = true;
+  if (!name.value.trim())                  { name.classList.add('error');  valid = false; }
+  if (!/\S+@\S+\.\S+/.test(email.value))  { email.classList.add('error'); valid = false; }
+
+  if (!valid) { err.classList.add('visible'); return; }
+
+  window.location.href = 'https://calendar.app.google/kek3YEe5Wq2fhYKMA';
+});
+</script>
+</body>
+</html>
