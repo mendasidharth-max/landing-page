@@ -35,10 +35,9 @@ body {
   border-bottom: 1px solid rgba(18,20,42,0.08);
 }
 .book-nav-logo {
-  font-size: 18px; font-weight: 800; color: var(--navy);
-  text-decoration: none; letter-spacing: -.02em;
+  text-decoration: none; display: flex; align-items: center;
 }
-.book-nav-logo em { color: var(--green); font-style: normal; }
+.book-nav-logo img { height: 44px; width: auto; display: block; }
 .book-nav-back {
   font-size: 13px; font-weight: 700; color: var(--navy);
   text-decoration: none; opacity: .55;
@@ -249,7 +248,7 @@ body {
 <body>
 
 <nav class="book-nav">
-  <a href="index.html" class="book-nav-logo">greenlight<em>digital</em></a>
+  <a href="index.html" class="book-nav-logo"><img src="logo.svg" alt="Greenlight Digital"></a>
   <a href="index.html" class="book-nav-back">← Back to site</a>
 </nav>
 
