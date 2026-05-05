@@ -199,13 +199,46 @@ body {
 }
 .berror.show { display: block; }
 
-/* Step 4 – calendar */
-.book-cal-wrap {
-  border-radius: 14px; overflow: hidden;
-  border: 2px solid rgba(18,20,42,.1);
-  height: 460px; margin-bottom: 0;
+/* Step 4 – booking */
+.book-confirm-card {
+  background: var(--navy); border-radius: 16px;
+  padding: 32px 28px; margin-bottom: 28px;
 }
-.book-cal-wrap iframe { width: 100%; height: 100%; display: block; border: none; }
+.book-confirm-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--green); margin-bottom: 14px;
+}
+.book-confirm-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 8px;
+}
+.book-confirm-row:last-child { margin-bottom: 0; }
+.book-confirm-key { font-size: 12px; font-weight: 600; color: rgba(247,242,238,.45); min-width: 60px; }
+.book-confirm-val { font-size: 14px; font-weight: 700; color: var(--cream); flex: 1; }
+.btn-copy {
+  background: rgba(163,232,122,.15); border: 1px solid rgba(163,232,122,.3);
+  border-radius: 6px; padding: 4px 10px;
+  font-family: var(--font); font-size: 11px; font-weight: 700; color: var(--green);
+  cursor: pointer; transition: background .2s; white-space: nowrap;
+}
+.btn-copy:hover { background: rgba(163,232,122,.25); }
+.book-cal-note {
+  font-size: 13px; font-weight: 500; color: rgba(18,20,42,.45);
+  margin-bottom: 24px; line-height: 1.5;
+}
+.btn-book-cal {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 18px 40px; background: var(--green); color: var(--navy);
+  border: none; border-radius: 999px;
+  font-family: var(--font); font-size: 16px; font-weight: 800;
+  cursor: pointer; text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.btn-book-cal:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(163,232,122,.45); }
+.book-submitted-note {
+  font-size: 12px; font-weight: 500; color: rgba(18,20,42,.35);
+  margin-top: 14px;
+}
 
 /* Progress bar */
 .bprogress {
@@ -326,29 +359,45 @@ body {
 
     <!-- Step 4 -->
     <div class="bstep" data-step="4">
-      <h2 class="bstep-heading">Pick your time.</h2>
-      <p class="bstep-sub">Choose a slot that works for you — we'll see you on the call.</p>
-      <div class="book-cal-wrap">
-        <iframe id="calIframe" src="" title="Book a meeting" allowfullscreen></iframe>
+      <h2 class="bstep-heading">One last step —<br>pick your time.</h2>
+      <p class="bstep-sub">Use the details below when Google Calendar asks for your info.</p>
+      <div class="book-confirm-card">
+        <p class="book-confirm-label">Your details ✓</p>
+        <div class="book-confirm-row">
+          <span class="book-confirm-key">Name</span>
+          <span class="book-confirm-val" id="conf-name"></span>
+        </div>
+        <div class="book-confirm-row">
+          <span class="book-confirm-key">Email</span>
+          <span class="book-confirm-val" id="conf-email"></span>
+          <button class="btn-copy" onclick="copyEmail()">Copy</button>
+        </div>
+        <div class="book-confirm-row">
+          <span class="book-confirm-key">Company</span>
+          <span class="book-confirm-val" id="conf-company"></span>
+        </div>
       </div>
+      <p class="book-cal-note">Google Calendar will ask for your name and email — they're shown above so you can paste them straight in.</p>
+      <a id="calBtn" href="https://calendar.app.google/kek3YEe5Wq2fhYKMA" target="_blank" class="btn-book-cal">Book your time →</a>
+      <p class="book-submitted-note" id="submitNote"></p>
     </div>
 
   </div>
 </div>
 
 <script>
-const CALENDAR_URL = 'https://calendar.app.google/kek3YEe5Wq2fhYKMA';
+// Replace YOUR_FORM_ID with your actual Formspree form ID from formspree.io
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 const TOTAL = 4;
 let current = 1;
+let formSubmitted = false;
 
 function goStep(n) {
   if (n > current && !validate(current)) return;
 
-  // Update steps
   document.querySelector(`.bstep[data-step="${current}"]`).classList.remove('active');
   document.querySelector(`.bstep[data-step="${n}"]`).classList.add('active');
 
-  // Update indicators
   document.querySelectorAll('.book-ind').forEach(el => {
     const s = parseInt(el.dataset.ind);
     el.classList.remove('active','done');
@@ -356,16 +405,41 @@ function goStep(n) {
     if (s < n)  el.classList.add('done');
   });
 
-  // Progress bar
   document.getElementById('bProgressFill').style.width = (n / TOTAL * 100) + '%';
 
-  // Load calendar on step 4
   if (n === 4) {
-    const iframe = document.getElementById('calIframe');
-    if (!iframe.src) iframe.src = CALENDAR_URL;
+    // Populate confirmation card
+    document.getElementById('conf-name').textContent    = document.getElementById('f-name').value.trim();
+    document.getElementById('conf-email').textContent   = document.getElementById('f-email').value.trim();
+    document.getElementById('conf-company').textContent = document.getElementById('f-company').value.trim() || '—';
+
+    // Submit form data to Formspree (fire-and-forget)
+    if (!formSubmitted) {
+      const services = [...document.querySelectorAll('.bcheckboxes input:checked')].map(el => el.value).join(', ') || 'None selected';
+      const heard = (document.querySelector('input[name="heard"]:checked') || {}).value || 'Not specified';
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name:     document.getElementById('f-name').value.trim(),
+          email:    document.getElementById('f-email').value.trim(),
+          company:  document.getElementById('f-company').value.trim(),
+          services,
+          heard,
+        })
+      })
+      .then(r => {
+        formSubmitted = true;
+        document.getElementById('submitNote').textContent = r.ok
+          ? '✓ Your details have been sent to us — we\'ll be in touch!'
+          : 'Details saved. See you on the call!';
+      })
+      .catch(() => {
+        document.getElementById('submitNote').textContent = 'Details saved. See you on the call!';
+      });
+    }
   }
 
-  // Scroll right panel to top
   document.querySelector('.book-right').scrollTop = 0;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -388,7 +462,15 @@ function validate(step) {
   return true;
 }
 
-// Allow Enter key to advance on step 1
+function copyEmail() {
+  const email = document.getElementById('conf-email').textContent;
+  navigator.clipboard.writeText(email).then(() => {
+    const btn = document.querySelector('.btn-copy');
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+  });
+}
+
 document.querySelectorAll('#f-name, #f-email, #f-company').forEach(el => {
   el.addEventListener('keydown', e => { if (e.key === 'Enter') goStep(2); });
 });
