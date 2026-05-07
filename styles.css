@@ -923,19 +923,12 @@ h2.section-title {
   position: relative;
 }
 .lt-blob {
-  width: min(440px, 90%);
+  width: min(470px, 94%);
   height: auto;
   display: block;
-  filter: drop-shadow(7px 11px 0 var(--navy));
   transition: transform .35s cubic-bezier(.22,1,.36,1);
 }
-.lt-mascot-body {
-  fill: #caffd2;
-  stroke: var(--navy);
-  stroke-width: 28;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
+.lt-mascot-img { pointer-events: none; }
 .lets-talk-visual:hover .lt-blob { transform: scale(1.02) rotate(-1deg); }
 .lt-eye {
   transform-origin: center;
