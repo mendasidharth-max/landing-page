@@ -743,19 +743,15 @@ h2.section-title {
 }
 .gl-right .gl-meta { flex-direction: row-reverse; }
 .gl-avatar {
-  align-items: center;
   aspect-ratio: 1;
-  background: radial-gradient(circle at 35% 25%, #ffffff 0 8%, var(--gl-lime) 9% 46%, #0b2b12 47% 100%);
   border: 2px solid rgba(244, 255, 241, 0.32);
   border-radius: 50%;
-  color: var(--gl-bg);
-  display: flex;
   flex: 0 0 58px;
-  font-size: 16px;
-  font-weight: 900;
-  justify-content: center;
   width: 58px;
   height: 58px;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 5px 6px 0 rgba(5, 7, 5, 0.22);
 }
 .gl-meta p {
   color: var(--gl-ink);
