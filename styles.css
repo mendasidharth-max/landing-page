@@ -921,11 +921,15 @@ h2.section-title {
   align-items: center;
   justify-content: center;
   position: relative;
+  min-height: min(68vw, 840px);
+  overflow: visible;
 }
 .lt-blob {
-  width: min(470px, 94%);
+  width: min(1120px, 190%);
+  max-width: none;
   height: auto;
   display: block;
+  margin-left: clamp(-220px, -12vw, -80px);
   transition: transform .35s cubic-bezier(.22,1,.36,1);
 }
 .lt-mascot-img { pointer-events: none; }
@@ -1039,8 +1043,8 @@ h2.section-title {
 @media (max-width: 860px) {
   .lets-talk-section { padding: 80px 24px; }
   .lets-talk-wrapper { grid-template-columns: 1fr; gap: 32px; }
-  .lets-talk-visual { order: -1; }
-  .lt-blob { width: min(320px, 70%); }
+  .lets-talk-visual { order: -1; min-height: 420px; }
+  .lt-blob { width: min(760px, 150vw); margin-left: 0; }
   .lets-talk-heading { font-size: clamp(64px, 18vw, 110px); letter-spacing: -2px; }
   .lets-talk-actions { flex-direction: column; align-items: flex-start; }
 }
