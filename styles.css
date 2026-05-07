@@ -428,6 +428,28 @@ h2.section-title {
   display: inline-block;
   padding-bottom: .04em;
 }
+.text-scroll-fade {
+  --text-reveal: 0%;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 var(--text-reveal),
+    rgba(0, 0, 0, 0) calc(var(--text-reveal) + 18%),
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    #000 var(--text-reveal),
+    rgba(0, 0, 0, 0) calc(var(--text-reveal) + 18%),
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  will-change: transform, opacity, filter, -webkit-mask-image, mask-image;
+}
 
 /* ── SERVICES ───────────────────────────────────── */
 .services { background: rgba(0,0,0,0.88); color: var(--cream); padding: 0; backdrop-filter: blur(6px); }

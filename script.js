@@ -709,6 +709,79 @@ gsap.utils.toArray('.gs-fade-up').forEach(el=>{
   });
 });
 
+// TEXT FADE ON SCROLL — Framer-style soft mask reveal
+(function initTextFadeOnScroll(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const selector = [
+    'h1',
+    'h2',
+    'h3',
+    'p',
+    '.section-label',
+    '.svc-num',
+    '.svc-name',
+    '.svc-desc',
+    '.svc-link',
+    '.work-tag',
+    '.work-name',
+    '.work-sub',
+    '.step-name',
+    '.step-desc',
+    '.stat-num',
+    '.stat-label',
+    '.gl-meta span',
+    '.btn-primary',
+    '.btn-secondary',
+    '.lets-talk-email',
+    '.footer-copy',
+    '.footer-socials a'
+  ].join(',');
+
+  const skipSelector = [
+    'nav',
+    '.site-loader',
+    '.custom-cursor',
+    '.target-cursor-wrapper',
+    '.rotating-text-word',
+    '.rotating-text-char',
+    '.split-word',
+    '.split-word-inner',
+    '.label-stack',
+    '.pill-label',
+    '.pill-label-hover',
+    '.lt-hover-square'
+  ].join(',');
+
+  gsap.utils.toArray(selector).forEach(el => {
+    if(el.closest(skipSelector) || el.classList.contains('text-scroll-fade')) return;
+    if(!el.textContent || !el.textContent.trim()) return;
+    el.classList.add('text-scroll-fade');
+
+    if(reduceMotion){
+      el.style.setProperty('--text-reveal', '100%');
+      return;
+    }
+
+    gsap.fromTo(el,
+      {'--text-reveal':'0%', opacity:.34, y:14, filter:'blur(3px)'},
+      {
+        '--text-reveal':'100%',
+        opacity:1,
+        y:0,
+        filter:'blur(0px)',
+        ease:'none',
+        scrollTrigger:{
+          trigger:el,
+          start:'top 92%',
+          end:'top 58%',
+          scrub:.55,
+          once:false
+        }
+      }
+    );
+  });
+})();
+
 // SERVICES STAGGER
 gsap.from('.gs-svc-row',{
   scrollTrigger:{trigger:'.services-list',start:'top 80%',toggleActions:'play none none none'},
