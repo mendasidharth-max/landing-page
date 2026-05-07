@@ -945,11 +945,12 @@ gsap.from('.gs-testimonial',{
 
   function eyeScreenCenter(eye){
     const r = blob.getBoundingClientRect();
+    const viewBox = blob.viewBox.baseVal;
     const cx = parseFloat(eye.dataset.cx);
     const cy = parseFloat(eye.dataset.cy);
     return {
-      x: r.left + (cx / 500) * r.width,
-      y: r.top  + (cy / 500) * r.height,
+      x: r.left + ((cx - viewBox.x) / viewBox.width) * r.width,
+      y: r.top  + ((cy - viewBox.y) / viewBox.height) * r.height,
     };
   }
 

@@ -926,8 +926,15 @@ h2.section-title {
   width: min(440px, 90%);
   height: auto;
   display: block;
-  filter: drop-shadow(8px 12px 0 var(--navy));
+  filter: drop-shadow(7px 11px 0 var(--navy));
   transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.lt-mascot-body {
+  fill: #caffd2;
+  stroke: var(--navy);
+  stroke-width: 28;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 .lets-talk-visual:hover .lt-blob { transform: scale(1.02) rotate(-1deg); }
 .lt-eye {
