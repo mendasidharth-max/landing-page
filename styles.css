@@ -821,8 +821,8 @@ h2.section-title {
 
 /* ── MOUSE IMAGE TRAIL ──────────────────────────── */
 .mouse-trail-section {
-  min-height: 260px;
-  padding: 52px 48px;
+  min-height: clamp(460px, 52vh, 640px);
+  padding: clamp(110px, 14vh, 170px) 48px;
   position: relative;
   overflow: hidden;
   display: grid;
@@ -1382,7 +1382,7 @@ body::after {
   .process-dot { left:-47px; }
   .step-num { font-size:48px; }
   .stats-grid { grid-template-columns:1fr 1fr; }
-  .mouse-trail-section { min-height:240px; padding:48px 24px; }
+  .mouse-trail-section { min-height:420px; padding:96px 24px; }
   .mouse-trail-copy p { font-size:14px; }
   .content__img, .trail-image { width:140px; border-radius:14px; }
   .cta-section { padding:44px 24px; min-height:420px; display:grid; place-items:center; }
