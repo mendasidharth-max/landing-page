@@ -111,7 +111,7 @@ nav, section, .marquee-section, .stats, footer,
 /* ── NAV ────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: space-between; align-items: flex-start;
   padding: 24px 48px 12px;
 }
 .nav-logo-wrap {
