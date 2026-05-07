@@ -936,39 +936,6 @@ h2.section-title {
   50%      { transform: var(--eye-tx, translate(0,0)) scaleY(.05); }
 }
 
-/* Inverted-color hover square */
-.lt-hover-square {
-  position: fixed;
-  top: 0; left: 0;
-  width: 220px; height: 220px;
-  background: rgba(255,255,255,0.55);
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(.7) rotate(-6deg);
-  transition: opacity .22s ease, transform .35s cubic-bezier(.22,1,.36,1);
-  mix-blend-mode: difference;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  font-family: var(--font);
-}
-.lt-hover-square.is-active {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1) rotate(-6deg);
-}
-.lt-hover-square span {
-  background: #fff;
-  color: #000;
-  padding: 4px 10px;
-  margin-bottom: -14px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .18em;
-  white-space: nowrap;
-  border-radius: 3px;
-  mix-blend-mode: normal;
-}
 .lets-talk-content {
   display: flex;
   flex-direction: column;

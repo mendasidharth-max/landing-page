@@ -748,7 +748,7 @@ gsap.utils.toArray('.gs-fade-up').forEach(el=>{
     '.label-stack',
     '.pill-label',
     '.pill-label-hover',
-    '.lt-hover-square'
+    '.lt-mascot-img'
   ].join(',');
 
   gsap.utils.toArray(selector).forEach(el => {
@@ -994,14 +994,13 @@ gsap.from('.gs-testimonial',{
 })();
 
 // ====================================================
-// LET'S TALK — eye tracking + inverted hover square
+// LET'S TALK — eye tracking
 // ════════════════════════════════════════════════════
 (function initLetsTalk(){
   const section = document.getElementById('lets-talk');
   const visual  = document.getElementById('ltVisual');
   const blob    = document.getElementById('ltBlob');
-  const square  = document.getElementById('ltHoverSquare');
-  if(!section || !visual || !blob || !square) return;
+  if(!section || !visual || !blob) return;
 
   const eyes = blob.querySelectorAll('.lt-eye');
   const MAX_EYE_OFFSET = 10;
@@ -1009,7 +1008,6 @@ gsap.from('.gs-testimonial',{
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
   let pointerSeen = false;
-  let squareActive = false;
   const targetX = Array.from(eyes, () => 0);
   const targetY = Array.from(eyes, () => 0);
   const curX    = Array.from(eyes, () => 0);
@@ -1063,10 +1061,6 @@ gsap.from('.gs-testimonial',{
     mouseX = e.clientX;
     mouseY = e.clientY;
     updateTargets();
-    if(squareActive){
-      square.style.left = mouseX + 'px';
-      square.style.top  = mouseY + 'px';
-    }
   }
 
   function resetEyes(){
@@ -1092,18 +1086,6 @@ gsap.from('.gs-testimonial',{
     }, delay);
   }
   scheduleBlink();
-
-  // Hover square — track on the visual area
-  visual.addEventListener('mouseenter', () => {
-    squareActive = true;
-    square.style.left = mouseX + 'px';
-    square.style.top  = mouseY + 'px';
-    requestAnimationFrame(() => square.classList.add('is-active'));
-  });
-  visual.addEventListener('mouseleave', () => {
-    squareActive = false;
-    square.classList.remove('is-active');
-  });
 
   tick();
 })();
