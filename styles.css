@@ -891,9 +891,9 @@ h2.section-title {
 /* ── LET'S TALK ─────────────────────────────────── */
 .lets-talk-section {
   background:
-    radial-gradient(circle at 80% 12%, rgba(117,252,150,.24), transparent 24%),
-    radial-gradient(circle at 14% 82%, rgba(248,208,223,.34), transparent 24%),
-    var(--cream);
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,.36), transparent 24%),
+    radial-gradient(circle at 82% 78%, rgba(248,208,223,.42), transparent 28%),
+    linear-gradient(135deg, rgba(117,252,150,.96), rgba(255,255,255,.74));
   padding: clamp(80px, 12vh, 160px) 48px;
   position: relative;
   overflow: hidden;
