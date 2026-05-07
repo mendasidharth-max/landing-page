@@ -15,7 +15,7 @@ body {
   font-weight: 700;
   background: transparent;
   color: var(--navy);
-  cursor: none;
+  cursor: url('cursor.svg') 5 4, auto;
   overflow-x: hidden;
 }
 body.is-loading {
@@ -81,6 +81,7 @@ nav, section, .marquee-section, .stats, footer,
   pointer-events: none;
   z-index: 9999;
   will-change: transform;
+  display: none;
 }
 .custom-cursor-dot {
   width: 9px;
@@ -432,7 +433,7 @@ h2.section-title {
 .services-list { width: 100%; }
 .svc-row {
   border-top: 1px solid rgba(255,255,255,.1);
-  overflow: hidden; cursor: none;
+  overflow: hidden; cursor: url('cursor.svg') 5 4, auto;
   transition: background .5s cubic-bezier(.4,0,.2,1);
   background: transparent;
 }
@@ -499,7 +500,7 @@ h2.section-title {
 .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .work-card {
   border-radius: 20px; overflow: hidden;
-  position: relative; aspect-ratio: 4/3; cursor: none;
+  position: relative; aspect-ratio: 4/3; cursor: url('cursor.svg') 5 4, auto;
   will-change: transform;
 }
 .work-card:first-child { grid-row: span 2; aspect-ratio: unset; }
