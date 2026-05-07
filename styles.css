@@ -115,22 +115,18 @@ nav {
   padding: 24px 48px 12px;
 }
 .nav-logo-wrap {
-  width: 220px; height: 220px; border-radius: 50%;
+  width: auto; height: auto; border-radius: 0;
   display: inline-flex; align-items: center; justify-content: center;
-  line-height: 0; overflow: hidden;
-  transition: width .45s cubic-bezier(.22,1,.36,1), height .45s cubic-bezier(.22,1,.36,1), transform .3s ease;
+  line-height: 0; overflow: visible;
+  transition: transform .3s ease;
 }
-.nav-logo-wrap:hover { transform: rotate(8deg) scale(1.04); }
+.nav-logo-wrap:hover { transform: scale(1.04); }
 .nav-logo-wrap img {
-  height: 220px; width: auto; object-fit: contain; display: block;
+  height: 64px; width: auto; object-fit: contain; display: block;
   transition: height .45s cubic-bezier(.22,1,.36,1);
 }
-nav.is-scrolled .nav-logo-wrap {
-  width: 104px;
-  height: 104px;
-}
 nav.is-scrolled .nav-logo-wrap img {
-  height: 104px;
+  height: 48px;
 }
 .nav-links {
   --nav-h: 44px;
