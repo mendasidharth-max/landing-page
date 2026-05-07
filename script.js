@@ -268,6 +268,10 @@
 // CUSTOM CURSOR
 // ════════════════════════════════════════════════════
 (function initCustomCursor(){
+  // Disabled: replaced site-wide by the cursor.svg CSS cursor (commit 2ee7489).
+  // Leaving the JS overlay active was hiding the OS cursor (body.style.cursor = 'none')
+  // while the .custom-cursor divs stayed display:none, so the cursor went invisible.
+  return;
   const dot = document.getElementById('customCursorDot');
   const ring = document.getElementById('customCursorRing');
   if(!dot || !ring || window.innerWidth <= 768 || 'ontouchstart' in window) return;
@@ -920,4 +924,96 @@ gsap.from('.gs-testimonial',{
 // CTA BLOB PARALLAX
 gsap.to('.cta-blob-1',{scrollTrigger:{trigger:'.cta-section',start:'top bottom',end:'bottom top',scrub:2},x:80,y:-80});
 gsap.to('.cta-blob-2',{scrollTrigger:{trigger:'.cta-section',start:'top bottom',end:'bottom top',scrub:2},x:-80,y:80});
+
+// ====================================================
+// LET'S TALK — eye tracking + inverted hover square
+// ════════════════════════════════════════════════════
+(function initLetsTalk(){
+  const section = document.getElementById('lets-talk');
+  const visual  = document.getElementById('ltVisual');
+  const blob    = document.getElementById('ltBlob');
+  const square  = document.getElementById('ltHoverSquare');
+  if(!section || !visual || !blob || !square) return;
+
+  const eyes = blob.querySelectorAll('.lt-eye');
+  const MAX_PUPIL_OFFSET = 9;
+  let mouseX = 0, mouseY = 0;
+  let targetX = [0,0], targetY = [0,0];
+  let curX    = [0,0], curY    = [0,0];
+  let rafId = null;
+
+  function eyeScreenCenter(eye){
+    const r = blob.getBoundingClientRect();
+    const cx = parseFloat(eye.dataset.cx);
+    const cy = parseFloat(eye.dataset.cy);
+    return {
+      x: r.left + (cx / 500) * r.width,
+      y: r.top  + (cy / 500) * r.height,
+    };
+  }
+
+  function tick(){
+    eyes.forEach((eye, i) => {
+      curX[i] += (targetX[i] - curX[i]) * 0.22;
+      curY[i] += (targetY[i] - curY[i]) * 0.22;
+      const tx = `translate(${curX[i].toFixed(2)}px, ${curY[i].toFixed(2)}px)`;
+      eye.style.setProperty('--eye-tx', tx);
+      eye.style.transform = tx;
+    });
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function updateTargets(){
+    eyes.forEach((eye, i) => {
+      const c = eyeScreenCenter(eye);
+      const dx = mouseX - c.x;
+      const dy = mouseY - c.y;
+      const dist = Math.hypot(dx, dy) || 1;
+      const mag = Math.min(MAX_PUPIL_OFFSET, dist * 0.06);
+      targetX[i] = (dx / dist) * mag;
+      targetY[i] = (dy / dist) * mag;
+    });
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    updateTargets();
+    if(squareActive){
+      square.style.left = mouseX + 'px';
+      square.style.top  = mouseY + 'px';
+    }
+  }, { passive: true });
+
+  window.addEventListener('scroll', updateTargets, { passive: true });
+  window.addEventListener('resize', updateTargets);
+
+  // Idle blink loop
+  function scheduleBlink(){
+    const delay = 2800 + Math.random() * 3200;
+    setTimeout(() => {
+      eyes.forEach(eye => {
+        eye.classList.add('is-blink');
+        setTimeout(() => eye.classList.remove('is-blink'), 240);
+      });
+      scheduleBlink();
+    }, delay);
+  }
+  scheduleBlink();
+
+  // Hover square — track on the visual area
+  let squareActive = false;
+  visual.addEventListener('mouseenter', () => {
+    squareActive = true;
+    square.style.left = mouseX + 'px';
+    square.style.top  = mouseY + 'px';
+    requestAnimationFrame(() => square.classList.add('is-active'));
+  });
+  visual.addEventListener('mouseleave', () => {
+    squareActive = false;
+    square.classList.remove('is-active');
+  });
+
+  tick();
+})();
 
