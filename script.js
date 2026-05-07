@@ -728,13 +728,7 @@ gsap.utils.toArray('.gs-fade-up').forEach(el=>{
     '.step-name',
     '.step-desc',
     '.stat-num',
-    '.stat-label',
-    '.gl-meta span',
-    '.btn-primary',
-    '.btn-secondary',
-    '.lets-talk-email',
-    '.footer-copy',
-    '.footer-socials a'
+    '.stat-label'
   ].join(',');
 
   const skipSelector = [
@@ -746,6 +740,11 @@ gsap.utils.toArray('.gs-fade-up').forEach(el=>{
     '.rotating-text-char',
     '.split-word',
     '.split-word-inner',
+    '.gl-meta',
+    '.lets-talk-actions',
+    '.lets-talk-email',
+    '.footer-copy',
+    '.footer-socials',
     '.label-stack',
     '.pill-label',
     '.pill-label-hover',
@@ -763,7 +762,7 @@ gsap.utils.toArray('.gs-fade-up').forEach(el=>{
     }
 
     gsap.fromTo(el,
-      {'--text-reveal':'0%', opacity:.34, y:14, filter:'blur(3px)'},
+      {'--text-reveal':'0%', opacity:.86, y:5, filter:'blur(.8px)'},
       {
         '--text-reveal':'100%',
         opacity:1,
@@ -772,8 +771,8 @@ gsap.utils.toArray('.gs-fade-up').forEach(el=>{
         ease:'none',
         scrollTrigger:{
           trigger:el,
-          start:'top 92%',
-          end:'top 58%',
+          start:'top 115%',
+          end:'top 101%',
           scrub:.55,
           once:false
         }
