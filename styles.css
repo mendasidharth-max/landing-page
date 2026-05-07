@@ -1,6 +1,6 @@
 ﻿:root {
-  --pink:      #D13817;
-  --pink-dark: #b02e10;
+  --pink:      #f8d0df;
+  --pink-dark: #e9a9c3;
   --green:     #75FC96;
   --green-dark:#50e87a;
   --navy:      #000000;
@@ -496,7 +496,7 @@ h2.section-title {
 
 /* ── MANIFESTO ──────────────────────────────────── */
 .manifesto {
-  background: rgba(209,56,23,0.76); text-align: center;
+  background: rgba(248,208,223,0.84); text-align: center;
   padding: 160px 48px; position: relative; overflow: hidden;
   backdrop-filter: blur(4px);
 }
@@ -679,23 +679,26 @@ h2.section-title {
 
 /* ── GREENLIGHT TESTIMONIALS ────────────────────── */
 .gl-testimonials {
-  --gl-bg: #ffffff;
+  --gl-bg: #75FC96;
   --gl-ink: #050705;
   --gl-muted: rgba(5, 7, 5, 0.6);
   --gl-dark: #061006;
-  --gl-lime: #b9ff4a;
-  --gl-green: #34f57a;
-  --gl-mint: #9fffd0;
-  --gl-cream: #f4fff1;
+  --gl-lime: #75FC96;
+  --gl-green: #75FC96;
+  --gl-mint: #f8d0df;
+  --gl-cream: #ffffff;
 
-  background: var(--gl-bg);
+  background:
+    radial-gradient(circle at 14% 12%, rgba(255,255,255,.42), transparent 24%),
+    radial-gradient(circle at 86% 76%, rgba(248,208,223,.5), transparent 28%),
+    linear-gradient(135deg, rgba(117,252,150,.96), rgba(255,255,255,.82));
   color: var(--gl-ink);
   overflow: hidden;
   padding: clamp(72px, 9vw, 132px) max(20px, calc((100vw - 1180px) / 2));
   position: relative;
 }
 .gl-eyebrow {
-  color: var(--gl-lime);
+  color: var(--gl-ink);
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.2em;
@@ -739,15 +742,17 @@ h2.section-title {
   text-align: right;
 }
 .gl-quote {
-  border-radius: 22px;
+  border: 2px solid rgba(0,0,0,.88);
+  border-radius: 8px;
+  box-shadow: 12px 12px 0 rgba(0,0,0,.12);
   color: var(--gl-dark);
   min-height: 128px;
   padding: clamp(24px, 3vw, 36px);
   position: relative;
 }
-.gl-lime .gl-quote { background: var(--gl-lime); }
-.gl-mint .gl-quote { background: var(--gl-mint); }
-.gl-cream .gl-quote { background: var(--gl-cream); }
+.gl-lime .gl-quote { background: var(--cream); }
+.gl-mint .gl-quote { background: var(--pink); }
+.gl-cream .gl-quote { background: linear-gradient(135deg, var(--cream), rgba(117,252,150,.22)); }
 
 .gl-quote p {
   font-size: clamp(28px, 3.15vw, 44px);
@@ -766,7 +771,7 @@ h2.section-title {
 .gl-right .gl-meta { flex-direction: row-reverse; }
 .gl-avatar {
   aspect-ratio: 1;
-  border: 2px solid rgba(244, 255, 241, 0.32);
+  border: 2px solid var(--navy);
   border-radius: 50%;
   flex: 0 0 58px;
   width: 58px;
@@ -783,7 +788,7 @@ h2.section-title {
   margin: 0 0 6px;
 }
 .gl-meta p span {
-  color: var(--gl-lime);
+  color: var(--green);
   margin: 0 4px;
 }
 .gl-meta div > span {
@@ -824,7 +829,7 @@ h2.section-title {
   place-items: center;
   isolation: isolate;
   background:
-    radial-gradient(circle at 18% 22%, rgba(209,56,23,.58), transparent 24%),
+    radial-gradient(circle at 18% 22%, rgba(248,208,223,.72), transparent 24%),
     radial-gradient(circle at 78% 70%, rgba(117,252,150,.66), transparent 28%),
     linear-gradient(135deg, rgba(255,255,255,.94), rgba(117,252,150,.44));
   border-top: 2px solid rgba(0,0,0,.12);
@@ -885,7 +890,10 @@ h2.section-title {
 
 /* ── LET'S TALK ─────────────────────────────────── */
 .lets-talk-section {
-  background: var(--cream);
+  background:
+    radial-gradient(circle at 80% 12%, rgba(117,252,150,.24), transparent 24%),
+    radial-gradient(circle at 14% 82%, rgba(248,208,223,.34), transparent 24%),
+    var(--cream);
   padding: clamp(80px, 12vh, 160px) 48px;
   position: relative;
   overflow: hidden;
@@ -1185,7 +1193,8 @@ h2.section-title {
 .work {
   background:
     radial-gradient(circle at 86% 14%, rgba(117,252,150,.46), transparent 22%),
-    linear-gradient(135deg, rgba(255,255,255,.96), rgba(209,56,23,.36));
+    radial-gradient(circle at 12% 82%, rgba(248,208,223,.62), transparent 26%),
+    linear-gradient(135deg, rgba(255,255,255,.96), rgba(117,252,150,.34));
   backdrop-filter: none;
 }
 .work-header {
@@ -1197,13 +1206,13 @@ h2.section-title {
   box-shadow: 12px 12px 0 rgba(0,0,0,.14);
 }
 .work-card-1 .work-card-bg {
-  background: linear-gradient(135deg, var(--navy), #2f5440);
+  background: linear-gradient(135deg, var(--navy), #174326);
 }
 .work-card-2 .work-card-bg {
-  background: linear-gradient(135deg, var(--green), var(--cream));
+  background: linear-gradient(135deg, var(--green), var(--pink));
 }
 .work-card-3 .work-card-bg {
-  background: linear-gradient(135deg, var(--pink), var(--green));
+  background: linear-gradient(135deg, var(--pink), var(--cream) 48%, var(--green));
 }
 .work-card-overlay {
   background: linear-gradient(to top, rgba(0,0,0,.86), rgba(0,0,0,.06));
@@ -1215,8 +1224,9 @@ h2.section-title {
 }
 .process-section {
   background:
-    radial-gradient(circle at 16% 12%, rgba(255,255,255,.34), transparent 22%),
-    linear-gradient(135deg, rgba(117,252,150,.92), rgba(255,255,255,.76));
+    radial-gradient(circle at 16% 12%, rgba(255,255,255,.46), transparent 22%),
+    radial-gradient(circle at 84% 72%, rgba(248,208,223,.5), transparent 26%),
+    linear-gradient(135deg, rgba(117,252,150,.94), rgba(255,255,255,.82));
   backdrop-filter: none;
 }
 .process-sticky-header {
@@ -1245,7 +1255,10 @@ h2.section-title {
   -webkit-text-stroke: 2px var(--navy);
 }
 .stats {
-  background: var(--navy);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(248,208,223,.22), transparent 24%),
+    radial-gradient(circle at 88% 78%, rgba(117,252,150,.18), transparent 24%),
+    var(--navy);
   color: var(--green);
   backdrop-filter: none;
 }
@@ -1260,7 +1273,8 @@ h2.section-title {
 .cta-section {
   background:
     radial-gradient(circle at 18% 20%, rgba(255,255,255,.34), transparent 24%),
-    linear-gradient(135deg, rgba(117,252,150,.96), rgba(122,207,80,.88));
+    radial-gradient(circle at 82% 76%, rgba(248,208,223,.42), transparent 28%),
+    linear-gradient(135deg, rgba(117,252,150,.96), rgba(255,255,255,.78));
   padding-top: clamp(48px,7vh,84px);
   padding-bottom: clamp(48px,7vh,84px);
   min-height: clamp(420px,56vh,560px);
@@ -1313,7 +1327,10 @@ h2.section-title {
   box-shadow: 10px 10px 0 rgba(0,0,0,.14);
 }
 footer {
-  background: #000;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(117,252,150,.18), transparent 28%),
+    radial-gradient(circle at 84% 100%, rgba(248,208,223,.14), transparent 24%),
+    #000;
   color: var(--green);
   border-top: 0;
 }
