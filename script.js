@@ -921,10 +921,6 @@ gsap.from('.gs-testimonial',{
   });
 })();
 
-// CTA BLOB PARALLAX
-gsap.to('.cta-blob-1',{scrollTrigger:{trigger:'.cta-section',start:'top bottom',end:'bottom top',scrub:2},x:80,y:-80});
-gsap.to('.cta-blob-2',{scrollTrigger:{trigger:'.cta-section',start:'top bottom',end:'bottom top',scrub:2},x:-80,y:80});
-
 // ====================================================
 // LET'S TALK — eye tracking + inverted hover square
 // ════════════════════════════════════════════════════

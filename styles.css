@@ -905,7 +905,9 @@ h2.section-title {
 .lets-talk-section *,
 .lets-talk-section *:hover { cursor: inherit; }
 .lets-talk-section .lets-talk-email,
-.lets-talk-section .lets-talk-email:hover { cursor: url('cursor.svg') 5 4, pointer; }
+.lets-talk-section .lets-talk-email:hover,
+.lets-talk-section .lets-talk-actions a,
+.lets-talk-section .lets-talk-actions a:hover { cursor: url('cursor.svg') 5 4, pointer; }
 .lets-talk-wrapper {
   width: min(1280px, 100%);
   margin: 0 auto;
@@ -1003,14 +1005,36 @@ h2.section-title {
   font-weight: 800;
   color: var(--navy);
   text-decoration: none;
-  border-bottom: 2px solid var(--navy);
-  padding-bottom: 4px;
-  transition: color .25s ease, border-color .25s ease, transform .25s ease;
+  background: var(--cream);
+  border: 2px solid var(--navy);
+  border-radius: 999px;
+  padding: .42em .9em .5em;
+  display: inline-block;
+  box-shadow: 10px 10px 0 rgba(0,0,0,.14);
+  transition: color .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
 .lets-talk-email:hover {
   color: var(--pink);
   border-color: var(--pink);
+  box-shadow: 8px 8px 0 rgba(0,0,0,.12);
   transform: translateY(-2px);
+}
+.lets-talk-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.lets-talk-actions .btn-primary {
+  font-size: 16px;
+  padding: 20px 48px;
+}
+.lets-talk-actions .btn-secondary {
+  font-size: 16px;
+  padding: 20px 40px;
+  border-color: var(--navy);
+  color: var(--navy);
 }
 @media (max-width: 860px) {
   .lets-talk-section { padding: 80px 24px; }
@@ -1018,6 +1042,7 @@ h2.section-title {
   .lets-talk-visual { order: -1; }
   .lt-blob { width: min(320px, 70%); }
   .lets-talk-heading { font-size: clamp(64px, 18vw, 110px); letter-spacing: -2px; }
+  .lets-talk-actions { flex-direction: column; align-items: flex-start; }
 }
 
 /* ── CTA ────────────────────────────────────────── */
