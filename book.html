@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book a Call — Greenlight Digital</title>
+<title>Book a Call â€” Greenlight Digital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --pink:  #F2B8CB;
-  --green: #A3E87A;
-  --navy:  #12142A;
-  --cream: #F7F2EE;
+  --pink:  #D13817;
+  --green: #75FC96;
+  --navy:  #000000;
+  --cream: #FFFFFF;
   --font:  'Funnel Sans', sans-serif;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,9 +29,9 @@ body {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 clamp(20px, 5vw, 60px);
   height: 80px;
-  background: rgba(247,242,238,0.94);
+  background: rgba(255,255,255,0.94);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(18,20,42,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 .book-nav-logo { text-decoration: none; display: flex; align-items: center; }
 .book-nav-logo img { height: 100px; width: auto; display: block; }
@@ -59,8 +59,8 @@ body {
   position: absolute; border-radius: 50%;
   filter: blur(80px); pointer-events: none;
 }
-.book-blob-1 { width: 320px; height: 320px; background: rgba(163,232,122,.15); top: -60px; right: -80px; }
-.book-blob-2 { width: 240px; height: 240px; background: rgba(242,184,203,.1); bottom: 40px; left: -60px; }
+.book-blob-1 { width: 320px; height: 320px; background: rgba(117,252,150,.15); top: -60px; right: -80px; }
+.book-blob-2 { width: 240px; height: 240px; background: rgba(209,56,23,.1); bottom: 40px; left: -60px; }
 .book-eyebrow {
   font-size: 11px; font-weight: 700; letter-spacing: .12em;
   text-transform: uppercase; color: var(--green); margin-bottom: 20px;
@@ -72,7 +72,7 @@ body {
 .book-heading em { color: var(--green); font-style: normal; display: block; }
 .book-desc {
   font-size: 15px; font-weight: 500;
-  color: rgba(247,242,238,.5); line-height: 1.6;
+  color: rgba(255,255,255,.5); line-height: 1.6;
   max-width: 340px; margin-bottom: 52px;
 }
 
@@ -83,22 +83,22 @@ body {
 .book-ind {
   display: flex; align-items: center; gap: 14px;
   padding: 13px 0;
-  border-top: 1px solid rgba(247,242,238,.07);
+  border-top: 1px solid rgba(255,255,255,.07);
   transition: opacity .3s;
 }
-.book-ind:last-child { border-bottom: 1px solid rgba(247,242,238,.07); }
+.book-ind:last-child { border-bottom: 1px solid rgba(255,255,255,.07); }
 .book-ind-dot {
   width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
-  border: 2px solid rgba(247,242,238,.2);
+  border: 2px solid rgba(255,255,255,.2);
   transition: background .3s, border-color .3s;
 }
 .book-ind.active .book-ind-dot  { background: var(--green); border-color: var(--green); }
 .book-ind.done  .book-ind-dot  { background: var(--green); border-color: var(--green); }
-.book-ind-num  { font-size: 11px; font-weight: 700; color: rgba(247,242,238,.35); min-width: 22px; }
+.book-ind-num  { font-size: 11px; font-weight: 700; color: rgba(255,255,255,.35); min-width: 22px; }
 .book-ind.active .book-ind-num { color: var(--green); }
-.book-ind-label { font-size: 13px; font-weight: 600; color: rgba(247,242,238,.45); }
+.book-ind-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.45); }
 .book-ind.active .book-ind-label { color: var(--cream); }
-.book-ind.done  .book-ind-label { color: rgba(247,242,238,.6); }
+.book-ind.done  .book-ind-label { color: rgba(255,255,255,.6); }
 
 /* RIGHT */
 .book-right {
@@ -116,7 +116,7 @@ body {
   margin-bottom: 6px; line-height: 1.15;
 }
 .bstep-sub {
-  font-size: 14px; font-weight: 500; color: rgba(18,20,42,.45);
+  font-size: 14px; font-weight: 500; color: rgba(0,0,0,.45);
   margin-bottom: 36px;
 }
 
@@ -129,13 +129,13 @@ body {
 }
 .bfield input {
   padding: 15px 18px;
-  border: 2px solid rgba(18,20,42,.14);
+  border: 2px solid rgba(0,0,0,.14);
   border-radius: 12px; background: #fff;
   font-family: var(--font); font-size: 15px; font-weight: 600;
   color: var(--navy); outline: none;
   transition: border-color .2s, box-shadow .2s;
 }
-.bfield input:focus { border-color: var(--navy); box-shadow: 0 0 0 4px rgba(18,20,42,.06); }
+.bfield input:focus { border-color: var(--navy); box-shadow: 0 0 0 4px rgba(0,0,0,.06); }
 .bfield input.error { border-color: #e05252; }
 
 /* Checkboxes */
@@ -143,39 +143,39 @@ body {
 .bcheck {
   display: flex; align-items: center; gap: 10px;
   padding: 14px 15px; border-radius: 10px; cursor: pointer;
-  border: 2px solid rgba(18,20,42,.12); background: #fff;
+  border: 2px solid rgba(0,0,0,.12); background: #fff;
   font-size: 13px; font-weight: 600; color: var(--navy);
   transition: border-color .2s, background .2s; user-select: none;
 }
 .bcheck input { display: none; }
 .bcheck-box {
   width: 16px; height: 16px; flex-shrink: 0; border-radius: 5px;
-  border: 2px solid rgba(18,20,42,.2);
+  border: 2px solid rgba(0,0,0,.2);
   display: flex; align-items: center; justify-content: center;
   transition: background .2s, border-color .2s;
 }
 .bcheck input:checked ~ .bcheck-box { background: var(--green); border-color: var(--green); }
-.bcheck input:checked ~ .bcheck-box::after { content: '✓'; font-size: 10px; color: var(--navy); font-weight: 900; }
-.bcheck:has(input:checked) { border-color: var(--navy); background: rgba(163,232,122,.1); }
+.bcheck input:checked ~ .bcheck-box::after { content: 'âœ“'; font-size: 10px; color: var(--navy); font-weight: 900; }
+.bcheck:has(input:checked) { border-color: var(--navy); background: rgba(117,252,150,.1); }
 
 /* Radios */
 .bradios { display: flex; flex-direction: column; gap: 10px; }
 .bradio {
   display: flex; align-items: center; gap: 12px;
   padding: 14px 16px; border-radius: 10px; cursor: pointer;
-  border: 2px solid rgba(18,20,42,.12); background: #fff;
+  border: 2px solid rgba(0,0,0,.12); background: #fff;
   font-size: 14px; font-weight: 600; color: var(--navy);
   transition: border-color .2s, background .2s; user-select: none;
 }
 .bradio input { display: none; }
 .bradio-dot {
   width: 16px; height: 16px; flex-shrink: 0; border-radius: 50%;
-  border: 2px solid rgba(18,20,42,.2);
+  border: 2px solid rgba(0,0,0,.2);
   display: flex; align-items: center; justify-content: center;
   transition: border-color .2s, box-shadow .2s;
 }
 .bradio input:checked ~ .bradio-dot { border-color: var(--navy); background: var(--navy); box-shadow: inset 0 0 0 3px var(--cream); }
-.bradio:has(input:checked) { border-color: var(--navy); background: rgba(18,20,42,.04); }
+.bradio:has(input:checked) { border-color: var(--navy); background: rgba(0,0,0,.04); }
 
 /* Actions */
 .bactions { display: flex; align-items: center; gap: 12px; }
@@ -185,21 +185,21 @@ body {
   font-family: var(--font); font-size: 15px; font-weight: 800;
   cursor: pointer; transition: transform .15s, box-shadow .15s;
 }
-.btn-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(163,232,122,.4); }
+.btn-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(117,252,150,.4); }
 .btn-back {
   padding: 16px 24px; background: none;
-  border: 2px solid rgba(18,20,42,.16); border-radius: 999px;
+  border: 2px solid rgba(0,0,0,.16); border-radius: 999px;
   font-family: var(--font); font-size: 14px; font-weight: 700; color: var(--navy);
   cursor: pointer; transition: border-color .2s, background .2s;
 }
-.btn-back:hover { border-color: var(--navy); background: rgba(18,20,42,.04); }
+.btn-back:hover { border-color: var(--navy); background: rgba(0,0,0,.04); }
 .berror {
   font-size: 13px; font-weight: 600; color: #e05252;
   display: none; margin-bottom: 4px;
 }
 .berror.show { display: block; }
 
-/* Step 4 – booking */
+/* Step 4 â€“ booking */
 .book-confirm-card {
   background: var(--navy); border-radius: 16px;
   padding: 32px 28px; margin-bottom: 28px;
@@ -213,17 +213,17 @@ body {
   gap: 12px; margin-bottom: 8px;
 }
 .book-confirm-row:last-child { margin-bottom: 0; }
-.book-confirm-key { font-size: 12px; font-weight: 600; color: rgba(247,242,238,.45); min-width: 60px; }
+.book-confirm-key { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.45); min-width: 60px; }
 .book-confirm-val { font-size: 14px; font-weight: 700; color: var(--cream); flex: 1; }
 .btn-copy {
-  background: rgba(163,232,122,.15); border: 1px solid rgba(163,232,122,.3);
+  background: rgba(117,252,150,.15); border: 1px solid rgba(117,252,150,.3);
   border-radius: 6px; padding: 4px 10px;
   font-family: var(--font); font-size: 11px; font-weight: 700; color: var(--green);
   cursor: pointer; transition: background .2s; white-space: nowrap;
 }
-.btn-copy:hover { background: rgba(163,232,122,.25); }
+.btn-copy:hover { background: rgba(117,252,150,.25); }
 .book-cal-note {
-  font-size: 13px; font-weight: 500; color: rgba(18,20,42,.45);
+  font-size: 13px; font-weight: 500; color: rgba(0,0,0,.45);
   margin-bottom: 24px; line-height: 1.5;
 }
 .btn-book-cal {
@@ -234,15 +234,15 @@ body {
   cursor: pointer; text-decoration: none;
   transition: transform .15s, box-shadow .15s;
 }
-.btn-book-cal:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(163,232,122,.45); }
+.btn-book-cal:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(117,252,150,.45); }
 .book-submitted-note {
-  font-size: 12px; font-weight: 500; color: rgba(18,20,42,.35);
+  font-size: 12px; font-weight: 500; color: rgba(0,0,0,.35);
   margin-top: 14px;
 }
 
 /* Progress bar */
 .bprogress {
-  height: 3px; background: rgba(18,20,42,.08);
+  height: 3px; background: rgba(0,0,0,.08);
   border-radius: 99px; margin-bottom: 40px; overflow: hidden;
 }
 .bprogress-fill {
@@ -265,7 +265,7 @@ body {
 
 <nav class="book-nav">
   <a href="index.html" class="book-nav-logo"><img src="logo.svg" alt="Greenlight Digital"></a>
-  <a href="index.html" class="book-nav-back">← Back to site</a>
+  <a href="index.html" class="book-nav-back">â† Back to site</a>
 </nav>
 
 <div class="book-page">
@@ -276,7 +276,7 @@ body {
     <div class="book-blob book-blob-2"></div>
     <p class="book-eyebrow">Book a call</p>
     <h1 class="book-heading">Let's make<br>something<em>great.</em></h1>
-    <p class="book-desc">Tell us a bit about yourself and what you're looking for — then pick a time that works for you.</p>
+    <p class="book-desc">Tell us a bit about yourself and what you're looking for â€” then pick a time that works for you.</p>
     <div class="book-indicators">
       <div class="book-ind active" data-ind="1"><span class="book-ind-dot"></span><span class="book-ind-num">01</span><span class="book-ind-label">Your details</span></div>
       <div class="book-ind" data-ind="2"><span class="book-ind-dot"></span><span class="book-ind-num">02</span><span class="book-ind-label">Services</span></div>
@@ -310,7 +310,7 @@ body {
       </div>
       <p class="berror" id="err1">Please fill in your name and a valid email.</p>
       <div class="bactions">
-        <button class="btn-next" onclick="goStep(2)">Next →</button>
+        <button class="btn-next" onclick="goStep(2)">Next â†’</button>
       </div>
     </div>
 
@@ -331,8 +331,8 @@ body {
         </div>
       </div>
       <div class="bactions">
-        <button class="btn-back" onclick="goStep(1)">← Back</button>
-        <button class="btn-next" onclick="goStep(3)">Next →</button>
+        <button class="btn-back" onclick="goStep(1)">â† Back</button>
+        <button class="btn-next" onclick="goStep(3)">Next â†’</button>
       </div>
     </div>
 
@@ -352,17 +352,17 @@ body {
         </div>
       </div>
       <div class="bactions">
-        <button class="btn-back" onclick="goStep(2)">← Back</button>
-        <button class="btn-next" onclick="goStep(4)">Pick a time →</button>
+        <button class="btn-back" onclick="goStep(2)">â† Back</button>
+        <button class="btn-next" onclick="goStep(4)">Pick a time â†’</button>
       </div>
     </div>
 
     <!-- Step 4 -->
     <div class="bstep" data-step="4">
-      <h2 class="bstep-heading">One last step —<br>pick your time.</h2>
+      <h2 class="bstep-heading">One last step â€”<br>pick your time.</h2>
       <p class="bstep-sub">Use the details below when Google Calendar asks for your info.</p>
       <div class="book-confirm-card">
-        <p class="book-confirm-label">Your details ✓</p>
+        <p class="book-confirm-label">Your details âœ“</p>
         <div class="book-confirm-row">
           <span class="book-confirm-key">Name</span>
           <span class="book-confirm-val" id="conf-name"></span>
@@ -377,8 +377,8 @@ body {
           <span class="book-confirm-val" id="conf-company"></span>
         </div>
       </div>
-      <p class="book-cal-note">Google Calendar will ask for your name and email — they're shown above so you can paste them straight in.</p>
-      <a id="calBtn" href="https://calendar.app.google/kek3YEe5Wq2fhYKMA" target="_blank" class="btn-book-cal">Book your time →</a>
+      <p class="book-cal-note">Google Calendar will ask for your name and email â€” they're shown above so you can paste them straight in.</p>
+      <a id="calBtn" href="https://calendar.app.google/kek3YEe5Wq2fhYKMA" target="_blank" class="btn-book-cal">Book your time â†’</a>
       <p class="book-submitted-note" id="submitNote"></p>
     </div>
 
@@ -411,7 +411,7 @@ function goStep(n) {
     // Populate confirmation card
     document.getElementById('conf-name').textContent    = document.getElementById('f-name').value.trim();
     document.getElementById('conf-email').textContent   = document.getElementById('f-email').value.trim();
-    document.getElementById('conf-company').textContent = document.getElementById('f-company').value.trim() || '—';
+    document.getElementById('conf-company').textContent = document.getElementById('f-company').value.trim() || 'â€”';
 
     // Submit form data to Formspree (fire-and-forget)
     if (!formSubmitted) {
@@ -431,7 +431,7 @@ function goStep(n) {
       .then(r => {
         formSubmitted = true;
         document.getElementById('submitNote').textContent = r.ok
-          ? '✓ Your details have been sent to us — we\'ll be in touch!'
+          ? 'âœ“ Your details have been sent to us â€” we\'ll be in touch!'
           : 'Details saved. See you on the call!';
       })
       .catch(() => {
