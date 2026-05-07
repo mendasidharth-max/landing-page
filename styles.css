@@ -1,37 +1,13 @@
-﻿@font-face { font-family: 'OldschoolGrotesk'; src: url('fonts/OldschoolGrotesk-NormalRegular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'OldschoolGrotesk'; src: url('fonts/OldschoolGrotesk-NormalMedium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: 'OldschoolGrotesk'; src: url('fonts/OldschoolGrotesk-NormalBold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
-@font-face { font-family: 'OldschoolGrotesk'; src: url('fonts/OldschoolGrotesk-NormalExtraBold.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; }
-@font-face { font-family: 'OldschoolGrotesk'; src: url('fonts/OldschoolGrotesk-NormalBlack.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
-
-@font-face { font-family: 'Aeonik'; src: url('fonts/Aeonik-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Aeonik'; src: url('fonts/Aeonik-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Aeonik'; src: url('fonts/Aeonik-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Aeonik'; src: url('fonts/Aeonik-Black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
-
-:root {
-  --pink:       #D13817;
-  --pink-dark:  #b02e10;
-  --green:      #75FC96;
-  --green-dark: #50e87a;
-  --navy:       #000000;
-  --cream:      #FFFFFF;
-  --cream-dark: #F2F2F2;
-  --font:       'Aeonik', sans-serif;
-  --font-title: 'OldschoolGrotesk', sans-serif;
+﻿:root {
+  --pink:      #D13817;
+  --pink-dark: #b02e10;
+  --green:     #75FC96;
+  --green-dark:#50e87a;
+  --navy:      #000000;
+  --cream:     #FFFFFF;
+  --cream-dark:#F2F2F2;
+  --font:      'Apfel Grotezk', 'Funnel Sans', sans-serif;
 }
-/* ── TITLE FONT (OldschoolGrotesk) ─────────────────── */
-.hero-headline,
-.section-title,
-.manifesto-text,
-.cta-heading,
-.svc-name,
-.testimonial-quote,
-.book-heading,
-.bstep-heading {
-  font-family: var(--font-title);
-}
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: auto; }
 body {
