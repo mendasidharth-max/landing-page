@@ -932,11 +932,16 @@ gsap.from('.gs-testimonial',{
   if(!section || !visual || !blob || !square) return;
 
   const eyes = blob.querySelectorAll('.lt-eye');
-  const MAX_PUPIL_OFFSET = 9;
-  let mouseX = 0, mouseY = 0;
-  let targetX = [0,0], targetY = [0,0];
-  let curX    = [0,0], curY    = [0,0];
-  let rafId = null;
+  const MAX_EYE_OFFSET = 10;
+  const EYE_EASE = 0.24;
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let pointerSeen = false;
+  let squareActive = false;
+  const targetX = Array.from(eyes, () => 0);
+  const targetY = Array.from(eyes, () => 0);
+  const curX    = Array.from(eyes, () => 0);
+  const curY    = Array.from(eyes, () => 0);
 
   function eyeScreenCenter(eye){
     const r = blob.getBoundingClientRect();
@@ -950,28 +955,38 @@ gsap.from('.gs-testimonial',{
 
   function tick(){
     eyes.forEach((eye, i) => {
-      curX[i] += (targetX[i] - curX[i]) * 0.22;
-      curY[i] += (targetY[i] - curY[i]) * 0.22;
+      curX[i] += (targetX[i] - curX[i]) * EYE_EASE;
+      curY[i] += (targetY[i] - curY[i]) * EYE_EASE;
       const tx = `translate(${curX[i].toFixed(2)}px, ${curY[i].toFixed(2)}px)`;
       eye.style.setProperty('--eye-tx', tx);
       eye.style.transform = tx;
     });
-    rafId = requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
+  }
+
+  function setEyeTarget(eye, i, x, y){
+    const c = eyeScreenCenter(eye);
+    const dx = x - c.x;
+    const dy = y - c.y;
+    const angle = Math.atan2(dy, dx);
+    const distance = Math.min(MAX_EYE_OFFSET, Math.hypot(dx, dy));
+
+    targetX[i] = Math.cos(angle) * distance;
+    targetY[i] = Math.sin(angle) * distance;
   }
 
   function updateTargets(){
     eyes.forEach((eye, i) => {
-      const c = eyeScreenCenter(eye);
-      const dx = mouseX - c.x;
-      const dy = mouseY - c.y;
-      const dist = Math.hypot(dx, dy) || 1;
-      const mag = Math.min(MAX_PUPIL_OFFSET, dist * 0.06);
-      targetX[i] = (dx / dist) * mag;
-      targetY[i] = (dy / dist) * mag;
+      if(pointerSeen) setEyeTarget(eye, i, mouseX, mouseY);
+      else {
+        targetX[i] = 0;
+        targetY[i] = 0;
+      }
     });
   }
 
-  window.addEventListener('mousemove', (e) => {
+  function handlePointerMove(e){
+    pointerSeen = true;
     mouseX = e.clientX;
     mouseY = e.clientY;
     updateTargets();
@@ -979,8 +994,16 @@ gsap.from('.gs-testimonial',{
       square.style.left = mouseX + 'px';
       square.style.top  = mouseY + 'px';
     }
-  }, { passive: true });
+  }
 
+  function resetEyes(){
+    pointerSeen = false;
+    updateTargets();
+  }
+
+  window.addEventListener('pointermove', handlePointerMove, { passive: true });
+  window.addEventListener('pointerleave', resetEyes, { passive: true });
+  window.addEventListener('blur', resetEyes);
   window.addEventListener('scroll', updateTargets, { passive: true });
   window.addEventListener('resize', updateTargets);
 
@@ -998,7 +1021,6 @@ gsap.from('.gs-testimonial',{
   scheduleBlink();
 
   // Hover square — track on the visual area
-  let squareActive = false;
   visual.addEventListener('mouseenter', () => {
     squareActive = true;
     square.style.left = mouseX + 'px';
