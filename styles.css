@@ -727,7 +727,7 @@ h2.section-title {
 }
 .gl-list {
   display: grid;
-  gap: 0;
+  gap: clamp(56px, 7vw, 96px);
   margin: clamp(72px, 10vw, 120px) auto 0;
   max-width: 1120px;
 }
