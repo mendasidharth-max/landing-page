@@ -512,6 +512,11 @@ h2.section-title {
   overflow: hidden;
   text-align: center;
 }
+.about-wrap {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+}
 .about-eyebrow {
   font-size: 13px;
   font-weight: 800;
@@ -617,17 +622,18 @@ h2.section-title {
 }
 .about-cta-icon svg { width: 14px; height: 14px; }
 
-/* Decorations */
+/* Decorations — anchored to .about-wrap so they hug the centered content */
 .about-decor {
   position: absolute;
   pointer-events: none;
   user-select: none;
+  z-index: 1;
 }
 .about-handwritten {
-  top: clamp(40px, 7vw, 110px);
-  left: clamp(20px, 6vw, 110px);
+  top: -10px;
+  left: clamp(0px, 6vw, 110px);
   font-family: 'Caveat', cursive;
-  font-size: clamp(28px, 3.4vw, 52px);
+  font-size: clamp(28px, 3.2vw, 50px);
   font-weight: 700;
   color: var(--about-ink);
   transform: rotate(-7deg);
@@ -636,39 +642,39 @@ h2.section-title {
 .about-handwritten span { display: block; }
 .about-swoosh {
   display: block;
-  width: clamp(72px, 7vw, 130px);
+  width: clamp(72px, 6.5vw, 120px);
   height: auto;
   margin-top: 2px;
-  margin-left: 12px;
+  margin-left: 14px;
 }
 .about-asterisk {
-  top: clamp(80px, 9vw, 160px);
-  right: clamp(60px, 8vw, 180px);
-  width: clamp(48px, 5vw, 84px);
+  top: 60px;
+  right: clamp(40px, 5vw, 110px);
+  width: clamp(48px, 4.6vw, 80px);
   transform: rotate(12deg);
 }
 .about-asterisk svg { width: 100%; height: auto; display: block; }
 .about-smiley {
-  top: clamp(180px, 22vw, 320px);
-  left: clamp(20px, 4vw, 80px);
-  width: clamp(56px, 6vw, 92px);
+  top: clamp(220px, 22vw, 340px);
+  left: clamp(0px, 3vw, 60px);
+  width: clamp(56px, 5.4vw, 88px);
   transform: rotate(-14deg);
   filter: drop-shadow(4px 5px 0 rgba(10,10,10,.1));
 }
 .about-smiley svg { width: 100%; height: auto; display: block; }
 .about-cursor {
-  top: clamp(220px, 26vw, 380px);
-  right: clamp(20px, 4vw, 80px);
+  top: clamp(260px, 26vw, 400px);
+  right: clamp(0px, 3vw, 60px);
   width: clamp(52px, 5vw, 84px);
   transform: rotate(8deg);
   filter: drop-shadow(4px 5px 0 rgba(10,10,10,.1));
 }
 .about-cursor svg { width: 100%; height: auto; display: block; }
 .about-sticker {
-  bottom: clamp(120px, 14vw, 220px);
-  left: clamp(28px, 5vw, 100px);
-  width: clamp(96px, 10vw, 140px);
-  height: clamp(96px, 10vw, 140px);
+  bottom: clamp(120px, 13vw, 200px);
+  left: clamp(0px, 3vw, 80px);
+  width: clamp(96px, 9.5vw, 132px);
+  height: clamp(96px, 9.5vw, 132px);
   border-radius: 50%;
   background: var(--about-decor);
   border: 2px solid var(--about-ink);
@@ -677,7 +683,7 @@ h2.section-title {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: clamp(10px, 1vw, 13px);
+  font-size: clamp(10px, 0.95vw, 13px);
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
