@@ -696,9 +696,7 @@ h2.section-title {
   color: var(--gl-ink);
   overflow: visible;
   padding: clamp(72px, 9vw, 132px) max(20px, calc((100vw - 1180px) / 2));
-  padding-bottom: 24vh;
   position: relative;
-  min-height: 320vh;
 }
 .gl-eyebrow {
   color: var(--gl-ink);
