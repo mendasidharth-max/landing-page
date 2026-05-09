@@ -882,23 +882,26 @@ if(mEl){
 // PROCESS THREAD + STICKY STEPS
 const steps = document.querySelectorAll('.process-step-item');
 const threadEl = document.getElementById('threadProgress');
-steps.forEach(step=>{
-  gsap.to(step,{
-    scrollTrigger:{trigger:step,start:'top 75%',toggleActions:'play none none none'},
-    opacity:1,y:0,duration:.8,ease:'power3.out',delay:.1
+const threadWrap = document.querySelector('.process-thread-wrap');
+if (steps.length && threadEl && threadWrap) {
+  steps.forEach(step=>{
+    gsap.to(step,{
+      scrollTrigger:{trigger:step,start:'top 75%',toggleActions:'play none none none'},
+      opacity:1,y:0,duration:.8,ease:'power3.out',delay:.1
+    });
+    ScrollTrigger.create({
+      trigger:step, start:'top 60%', end:'bottom 40%',
+      onEnter:()=>step.classList.add('is-active'),
+      onLeave:()=>step.classList.remove('is-active'),
+      onEnterBack:()=>step.classList.add('is-active'),
+      onLeaveBack:()=>step.classList.remove('is-active'),
+    });
   });
   ScrollTrigger.create({
-    trigger:step, start:'top 60%', end:'bottom 40%',
-    onEnter:()=>step.classList.add('is-active'),
-    onLeave:()=>step.classList.remove('is-active'),
-    onEnterBack:()=>step.classList.add('is-active'),
-    onLeaveBack:()=>step.classList.remove('is-active'),
+    trigger:threadWrap,start:'top 60%',end:'bottom 40%',scrub:.8,
+    onUpdate:self=>{ threadEl.style.height=(self.progress*100)+'%'; }
   });
-});
-ScrollTrigger.create({
-  trigger:'.process-thread-wrap',start:'top 60%',end:'bottom 40%',scrub:.8,
-  onUpdate:self=>{ threadEl.style.height=(self.progress*100)+'%'; }
-});
+}
 
 // TESTIMONIALS
 gsap.from('.gs-testimonial',{
