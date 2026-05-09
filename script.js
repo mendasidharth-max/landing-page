@@ -1,4 +1,27 @@
 ﻿// ====================================================
+// SMOOTH SCROLL
+// ====================================================
+(function initSmoothScroll() {
+  if (typeof window === 'undefined') return;
+  if (!window.Lenis) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const lenis = new Lenis({
+    duration: 1.1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    touchMultiplier: 1.2
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+})();
+
+// ====================================================
 // LOADING ANIMATION - GIF intro
 // ====================================================
 (function() {
@@ -856,18 +879,6 @@ if(mEl){
   });
 }
 
-// WORK CARDS — entrance + parallax
-gsap.utils.toArray('.gs-work-card').forEach((card,i)=>{
-  gsap.from(card,{
-    scrollTrigger:{trigger:'.work-grid',start:'top 85%',toggleActions:'play none none none'},
-    y:80,opacity:0,duration:.9,delay:i*.15,ease:'power3.out'
-  });
-  gsap.to(card,{
-    scrollTrigger:{trigger:card,start:'top bottom',end:'bottom top',scrub:1.5},
-    y: i%2===0 ? -30 : 30, ease:'none'
-  });
-});
-
 // PROCESS THREAD + STICKY STEPS
 const steps = document.querySelectorAll('.process-step-item');
 const threadEl = document.getElementById('threadProgress');
@@ -891,7 +902,7 @@ ScrollTrigger.create({
 
 // TESTIMONIALS
 gsap.from('.gs-testimonial',{
-  scrollTrigger:{trigger:'.testimonials-grid',start:'top 80%',toggleActions:'play none none none'},
+  scrollTrigger:{trigger:'.gl-list',start:'top 80%',toggleActions:'play none none none'},
   y:60,opacity:0,duration:.8,stagger:.15,ease:'power3.out'
 });
 

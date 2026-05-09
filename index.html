@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.13/dist/lenis.min.js"></script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="is-loading">
@@ -102,62 +103,62 @@
 <section class="work" id="work">
  <div class="work-header">
  <div>
- <div class="section-label gs-fade-up">Selected Work</div>
- <h2 class="section-title gs-split-title">Things we're<br>proud of.</h2>
+ <div class="section-label">Selected Work</div>
+ <h2 class="section-title">Things we're<br>proud of.</h2>
  </div>
- <a href="#lets-talk" class="btn-primary gs-fade-up">Start a Project →</a>
+ <a href="#lets-talk" class="btn-primary">Start a Project →</a>
  </div>
  <div class="featured-works-stack" aria-label="Featured work projects">
   <article class="featured-project featured-project-01" style="--project-bg: rgb(54, 197, 240); --project-text: rgb(17,18,18); --tag-bg: rgb(17,18,18); --tag-text: #fff; --project-z: 1;">
    <div class="featured-tab featured-tab-01"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.2L10.8 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/></svg><span>Project 01</span></div>
    <div class="featured-card">
     <div class="featured-copy">
-     <div class="featured-date"><span></span>Mar 19, 2026</div>
-     <h3>Meridian Health</h3>
-     <p>When therapists spend less time clicking, they have more time for patients.</p>
+     <div class="featured-date"><span></span>Brand + Social</div>
+     <h3>Bloom Botanicals</h3>
+     <p>Full brand identity and social strategy. 3x growth in 6 months.</p>
      <a href="#lets-talk">View project <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-     <div class="featured-tags"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Healthcare</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Workflow Design</span></div>
+     <div class="featured-tags"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Brand</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Social</span></div>
     </div>
-    <div class="featured-image"><img src="images/project-meridian.jpg" alt="A group of people on a running track"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 15-5-5L5 21M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8.5 8.5h.01"/></svg>IMAGE.JPG</span></div>
+    <div class="featured-image"><img src="images/project-bloom.jpg" alt="Bloom Botanicals project"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 15-5-5L5 21M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8.5 8.5h.01"/></svg>IMAGE.JPG</span></div>
    </div>
   </article>
   <article class="featured-project featured-project-02" style="--project-bg: rgb(17,18,18); --project-text: #fff; --tag-bg: #fff; --tag-text: rgb(17,18,18); --project-z: 2;">
    <div class="featured-tab featured-tab-02"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.2L10.8 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/></svg><span>Project 02</span></div>
    <div class="featured-card">
     <div class="featured-copy">
-     <div class="featured-date"><span></span>Mar 2, 2026</div>
-     <h3>StyleBook</h3>
-     <p>From "I hate this system" to "Can we show other salons?"</p>
+     <div class="featured-date"><span></span>Paid Media</div>
+     <h3>Volt Energy</h3>
+     <p>Google and Meta campaigns built around performance, clarity, and 480% ROAS.</p>
      <a href="#lets-talk">View project <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-     <div class="featured-tags"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>SAAS</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Transformation</span></div>
+     <div class="featured-tags"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Paid Media</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Growth</span></div>
     </div>
-    <div class="featured-image"><img src="images/project-stylebook.jpg" alt="A man sitting indoors"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 15-5-5L5 21M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8.5 8.5h.01"/></svg>IMAGE.JPG</span></div>
+    <div class="featured-image"><img src="images/project-volt.jpg" alt="Volt Energy project"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 15-5-5L5 21M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8.5 8.5h.01"/></svg>IMAGE.JPG</span></div>
    </div>
   </article>
   <article class="featured-project featured-project-03" style="--project-bg: rgb(236, 178, 46); --project-text: rgb(17,18,18); --tag-bg: rgb(17,18,18); --tag-text: #fff; --project-z: 3;">
    <div class="featured-tab featured-tab-03"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.2L10.8 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/></svg><span>Project 03</span></div>
    <div class="featured-card">
     <div class="featured-copy">
-     <div class="featured-date"><span></span>Jan 2, 2025</div>
-     <h3>Homestead</h3>
-     <p>Reimagining the way people find their next home.</p>
+     <div class="featured-date"><span></span>Content + SEO</div>
+     <h3>Skyline Ventures</h3>
+     <p>Content-led organic growth with #1 ranking in 4 months.</p>
      <a href="#lets-talk">View project <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-     <div class="featured-tags"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>PROPTECH</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>0 -> 1</span></div>
+     <div class="featured-tags"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Content</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>SEO</span></div>
     </div>
-    <div class="featured-image"><img src="images/project-homestead.jpg" alt="A colorful house detail"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 15-5-5L5 21M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8.5 8.5h.01"/></svg>IMAGE.JPG</span></div>
+    <div class="featured-image"><img src="images/project-skyline.jpg" alt="Skyline Ventures project"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 15-5-5L5 21M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8.5 8.5h.01"/></svg>IMAGE.JPG</span></div>
    </div>
   </article>
   <article class="featured-project featured-project-04" style="--project-bg: rgb(224, 30, 90); --project-text: #fff; --tag-bg: #fff; --tag-text: rgb(224,30,90); --project-z: 4;">
    <div class="featured-tab featured-tab-04"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.2L10.8 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/></svg><span>Project 04</span></div>
    <div class="featured-card">
     <div class="featured-copy">
-     <div class="featured-date"><span></span>Mar 19, 2026</div>
-     <h3>North Light</h3>
-     <p>Helping enterprise teams navigate hard strategic choices.</p>
+     <div class="featured-date"><span></span>Web Design</div>
+     <h3>Greenlight Studio</h3>
+     <p>A fast, expressive digital experience built to convert attention into action.</p>
      <a href="#lets-talk">View project <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-     <div class="featured-tags"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>STRATEGY</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>ENTERPRISE</span></div>
+     <div class="featured-tags"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Web</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M7 15v3M12 9v9M17 5v13"/></svg>Creative</span></div>
     </div>
-    <div class="featured-image"><img src="images/project-northlight.jpg" alt="A person in the desert"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 15-5-5L5 21M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8.5 8.5h.01"/></svg>IMAGE.JPG</span></div>
+    <div class="featured-image"><img src="images/project-greenlight.jpg" alt="Greenlight Studio project"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 15-5-5L5 21M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM8.5 8.5h.01"/></svg>IMAGE.JPG</span></div>
    </div>
   </article>
  </div>
