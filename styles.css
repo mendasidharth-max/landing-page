@@ -736,19 +736,8 @@ h2.section-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 78vh;
   max-width: 900px;
-  position: sticky;
-  top: clamp(96px, 12vh, 140px);
-}
-.gl-item:nth-child(1) { z-index: 1; }
-.gl-item:nth-child(2) {
-  z-index: 2;
-  top: clamp(116px, 14vh, 160px);
-}
-.gl-item:nth-child(3) {
-  z-index: 3;
-  top: clamp(136px, 16vh, 180px);
+  position: relative;
 }
 .gl-left {
   align-items: stretch;
