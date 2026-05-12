@@ -1104,3 +1104,53 @@ gsap.from('.gs-testimonial',{
   tick();
 })();
 
+// ════════════════════════════════════════════════════
+// COPY EMAIL
+// ════════════════════════════════════════════════════
+(function initEmailCopy(){
+  const copyButton = document.querySelector('[data-copy-email]');
+  if(!copyButton) return;
+
+  const toast = document.querySelector('.copy-toast');
+  let toastTimer;
+
+  async function copyText(text){
+    if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const field = document.createElement('textarea');
+    field.value = text;
+    field.setAttribute('readonly', '');
+    field.style.position = 'fixed';
+    field.style.left = '-9999px';
+    field.style.top = '0';
+    document.body.appendChild(field);
+    field.select();
+    document.execCommand('copy');
+    field.remove();
+  }
+
+  function showToast(){
+    if(!toast) return;
+    toast.textContent = 'Link copied';
+    toast.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('is-visible');
+    }, 1800);
+  }
+
+  copyButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const email = copyButton.dataset.copyEmail || copyButton.textContent.trim();
+    try {
+      await copyText(email);
+      showToast();
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
+  });
+})();
+
