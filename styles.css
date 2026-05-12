@@ -503,44 +503,68 @@ h2.section-title {
 
 /* ── ABOUT US ───────────────────────────────────── */
 .about-us {
-  --about-bg: transparent;
   --about-ink: #0a0a0a;
-  --about-hl: #B5F084;
-  --about-decor: #A3E87A;
-  background: transparent;
+  --about-hl: #c9ff2f;
+  --about-paper: #f4eddc;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255,255,255,.72), transparent 21%),
+    radial-gradient(circle at 80% 78%, rgba(255,246,216,.8), transparent 28%),
+    linear-gradient(180deg, var(--about-paper), #efe5d0);
   color: var(--about-ink);
-  padding: clamp(80px, 11vw, 160px) clamp(24px, 6vw, 80px);
+  min-height: 100vh;
+  padding: clamp(84px, 8vw, 128px) clamp(24px, 6vw, 80px) clamp(54px, 6vw, 92px);
   position: relative;
   overflow: hidden;
   text-align: center;
 }
+.about-us::before,
+.about-us::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.about-us::before {
+  background-image:
+    linear-gradient(rgba(10,10,10,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,10,10,.028) 1px, transparent 1px);
+  background-size: 86px 86px;
+  mix-blend-mode: multiply;
+  opacity: .45;
+}
+.about-us::after {
+  background:
+    radial-gradient(circle at 12% 22%, rgba(0,0,0,.16) 0 1px, transparent 1.3px),
+    radial-gradient(circle at 72% 8%, rgba(0,0,0,.14) 0 1px, transparent 1.3px),
+    radial-gradient(circle at 88% 72%, rgba(0,0,0,.12) 0 1px, transparent 1.4px);
+  background-size: 34px 34px, 52px 52px, 41px 41px;
+  opacity: .24;
+  mix-blend-mode: multiply;
+}
 .about-wrap {
   position: relative;
-  max-width: 1320px;
+  max-width: 1500px;
+  min-height: clamp(740px, 72vw, 900px);
   margin: 0 auto;
   isolation: isolate;
-}
-.about-eyebrow {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(10,10,10,.6);
-  margin: 0 0 clamp(20px, 2.4vw, 32px);
-  position: relative;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .about-heading {
   font-family: var(--font);
-  font-size: clamp(36px, 5.4vw, 88px);
+  font-size: clamp(42px, 5.25vw, 88px);
   font-weight: 900;
-  line-height: 1.06;
-  letter-spacing: -0.02em;
+  line-height: .96;
+  letter-spacing: -.045em;
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 980px;
   color: var(--about-ink);
   position: relative;
-  z-index: 2;
+  z-index: 4;
+  text-wrap: balance;
+  filter: contrast(1.08);
 }
 .about-line {
   display: block;
@@ -548,36 +572,48 @@ h2.section-title {
 .about-hl {
   background: var(--about-hl);
   color: var(--about-ink);
-  padding: 0.04em 0.22em 0.08em;
+  padding: .02em .18em .07em;
   border-radius: 2px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   display: inline-block;
   position: relative;
+  box-shadow: 0 0 0 1px rgba(139,196,28,.18) inset;
 }
-.about-hl-1 { transform: rotate(-1deg); }
-.about-hl-2 { transform: rotate(0.6deg); }
-.about-hl-3 { transform: rotate(-0.5deg); }
+.about-hl::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+  opacity: .36;
+  mix-blend-mode: overlay;
+}
+.about-hl-1 {
+  transform: rotate(-1deg);
+  padding-inline: .26em;
+}
+.about-hl-2 { transform: rotate(.6deg); }
+.about-hl-3 { transform: rotate(-.5deg); }
 .about-sub {
   font-family: var(--font);
-  font-size: clamp(20px, 2.4vw, 36px);
-  font-weight: 700;
-  line-height: 1.28;
-  letter-spacing: -0.012em;
-  margin: clamp(28px, 3.5vw, 48px) auto 0;
-  max-width: 920px;
+  font-size: clamp(24px, 2.25vw, 36px);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -.035em;
+  margin: clamp(44px, 4.4vw, 68px) auto 0;
+  max-width: 760px;
   color: var(--about-ink);
   position: relative;
-  z-index: 2;
+  z-index: 4;
 }
 .about-cta-wrap {
   position: relative;
-  z-index: 2;
+  z-index: 5;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  margin-top: clamp(40px, 5vw, 72px);
+  margin-top: clamp(46px, 5vw, 76px);
 }
 .about-cta {
   display: inline-flex;
@@ -594,6 +630,7 @@ h2.section-title {
   text-decoration: none;
   color: var(--about-ink);
   transition: transform .25s ease, background .25s ease, color .25s ease;
+  box-shadow: 0 1px 0 rgba(0,0,0,.22);
 }
 .about-cta:hover {
   background: var(--about-ink);
@@ -615,9 +652,10 @@ h2.section-title {
 .about-cta:hover .about-cta-icon { background: var(--green-deep); color: var(--about-ink); }
 .about-cta-scribble {
   display: block;
-  width: 160px;
-  height: 12px;
-  margin-top: 2px;
+  width: 174px;
+  height: 15px;
+  margin-top: 4px;
+  transform: rotate(-4deg);
 }
 
 /* ── Decorations ───────────────────────────────── */
@@ -628,15 +666,15 @@ h2.section-title {
   z-index: 1;
 }
 .about-handwritten {
-  top: 30px;
-  left: clamp(6%, 14%, 18%);
   font-family: 'Caveat', cursive;
-  font-size: clamp(26px, 2.6vw, 42px);
+  font-size: clamp(34px, 3vw, 56px);
   font-weight: 700;
   color: var(--about-ink);
-  transform: rotate(-6deg);
   line-height: 1;
-  z-index: 3;
+  z-index: 6;
+  margin: 0 0 clamp(18px, 2.2vw, 30px);
+  position: relative;
+  transform: rotate(-5deg);
 }
 .about-handwritten span { display: block; }
 .about-swoosh {
@@ -652,136 +690,152 @@ h2.section-title {
   height: auto;
 }
 .about-target-top {
-  top: 12px;
+  top: clamp(10px, 2vw, 28px);
   left: 50%;
   transform: translateX(-50%);
   opacity: .75;
 }
 .about-target-bottom {
-  bottom: 60px;
-  left: 8%;
+  bottom: clamp(70px, 8vw, 120px);
+  left: clamp(8%, 11vw, 14%);
   opacity: .5;
 }
 /* Green asterisk PNG */
 .about-asterisk {
-  top: clamp(80px, 8vw, 130px);
-  right: clamp(8%, 14%, 20%);
-  width: clamp(60px, 7vw, 120px);
+  top: clamp(74px, 7.2vw, 112px);
+  right: clamp(8%, 12vw, 16%);
+  width: clamp(70px, 6.6vw, 118px);
   height: auto;
-  transform: rotate(6deg);
-  z-index: 2;
+  transform: rotate(7deg);
+  z-index: 5;
 }
 /* Black glitch / noise blocks PNG */
 .about-glitch-tr {
-  top: 50px;
-  right: 2%;
-  width: clamp(80px, 10vw, 160px);
+  top: clamp(36px, 5vw, 76px);
+  right: clamp(1%, 5vw, 8%);
+  width: clamp(100px, 10vw, 170px);
   height: auto;
   opacity: .85;
-  z-index: 2;
+  z-index: 3;
 }
 /* Cyan painted arc PNG */
 .about-paint-cyan {
-  left: -2%;
-  top: 100px;
-  width: clamp(130px, 14vw, 220px);
+  left: clamp(-8%, -3vw, -1%);
+  top: clamp(150px, 14vw, 215px);
+  width: clamp(190px, 17vw, 290px);
   height: auto;
-  z-index: 0;
-  transform: rotate(-2deg);
+  z-index: 1;
+  transform: rotate(-8deg);
 }
 /* B&W photos */
 .about-photo {
-  z-index: 1;
+  z-index: 2;
+  filter: grayscale(1) contrast(1.16);
+  mix-blend-mode: multiply;
 }
 .about-photo-left {
-  left: -3%;
-  top: -90px;
-  width: clamp(150px, 17vw, 260px);
+  left: clamp(-3%, 2vw, 4%);
+  top: clamp(220px, 20vw, 300px);
+  width: clamp(180px, 14vw, 250px);
   height: auto;
   transform: rotate(-1deg);
 }
 .about-photo-right {
-  right: -3%;
-  top: -70px;
-  width: clamp(150px, 17vw, 260px);
+  right: clamp(-3%, 1vw, 3%);
+  top: clamp(300px, 27vw, 410px);
+  width: clamp(180px, 14vw, 250px);
   height: auto;
   transform: rotate(1deg);
+  z-index: 3;
 }
 /* Neon green smiley PNG */
 .about-smiley {
-  top: clamp(280px, 28vw, 420px);
-  left: clamp(4%, 8%, 14%);
-  width: clamp(56px, 5.4vw, 90px);
+  top: clamp(400px, 34vw, 500px);
+  left: clamp(13%, 16vw, 19%);
+  width: clamp(54px, 4.8vw, 78px);
   height: auto;
   transform: rotate(-10deg);
-  z-index: 3;
+  z-index: 6;
 }
 /* Orange torn tape PNG */
 .about-tape-red {
-  top: clamp(360px, 36vw, 540px);
-  right: clamp(6%, 14%, 22%);
-  width: clamp(180px, 20vw, 300px);
+  top: clamp(555px, 46vw, 690px);
+  right: clamp(3%, 8vw, 12%);
+  width: clamp(260px, 24vw, 420px);
   height: auto;
-  transform: rotate(-8deg);
-  z-index: 2;
+  transform: rotate(-7deg);
+  z-index: 3;
 }
 /* Green cursor arrow PNG */
 .about-cursor {
-  top: clamp(380px, 38vw, 560px);
-  right: clamp(3%, 6%, 10%);
-  width: clamp(50px, 5vw, 80px);
+  top: clamp(470px, 39vw, 580px);
+  right: clamp(-1%, 3vw, 6%);
+  width: clamp(52px, 4.6vw, 78px);
   height: auto;
   transform: rotate(0deg);
-  z-index: 3;
+  z-index: 6;
 }
 /* Scribble arrow loop PNG */
 .about-arrow {
-  top: clamp(540px, 52vw, 760px);
-  left: clamp(5%, 7vw, 12%);
-  width: clamp(80px, 8vw, 130px);
+  top: clamp(600px, 50vw, 720px);
+  left: clamp(5%, 9vw, 12%);
+  width: clamp(104px, 9vw, 150px);
   height: auto;
-  z-index: 2;
+  z-index: 5;
 }
 /* Built To Be Noticed badge PNG */
 .about-sticker {
-  top: clamp(540px, 52vw, 750px);
-  left: clamp(15%, 18vw, 22%);
-  width: clamp(90px, 9vw, 140px);
+  top: clamp(565px, 47vw, 690px);
+  left: clamp(10%, 14vw, 18%);
+  width: clamp(88px, 7.8vw, 124px);
   height: auto;
   transform: rotate(-6deg);
-  z-index: 3;
+  z-index: 6;
 }
 /* Yellow risograph dots PNG */
 .about-halftone-yellow {
-  top: 170px;
-  right: 1%;
-  width: clamp(80px, 9vw, 140px);
+  top: clamp(160px, 14vw, 220px);
+  right: clamp(-2%, 3vw, 6%);
+  width: clamp(112px, 8.8vw, 152px);
   height: auto;
-  z-index: 1;
+  z-index: 2;
 }
 /* Cyan dot texture PNG */
 .about-halftone-cyan {
-  top: clamp(480px, 48vw, 700px);
-  right: 8%;
-  width: clamp(60px, 7vw, 110px);
+  top: clamp(600px, 50vw, 720px);
+  right: clamp(5%, 10vw, 14%);
+  width: clamp(72px, 6vw, 104px);
   height: auto;
-  z-index: 1;
+  z-index: 2;
 }
 /* Black texture flecks PNG */
 .about-flecks {
-  bottom: 40px;
-  right: 12%;
-  width: clamp(100px, 11vw, 180px);
+  bottom: clamp(120px, 12vw, 190px);
+  right: clamp(5%, 10vw, 14%);
+  width: clamp(120px, 11vw, 190px);
   height: auto;
   opacity: .65;
-  z-index: 1;
+  z-index: 2;
 }
 
 @media (max-width: 860px) {
-  .about-us { padding: 72px 20px; }
-  .about-heading { font-size: clamp(28px, 7.4vw, 44px); line-height: 1.18; }
-  .about-sub { font-size: clamp(18px, 5vw, 26px); }
-  .about-handwritten,
+  .about-us {
+    min-height: auto;
+    padding: 86px 20px 76px;
+  }
+  .about-wrap {
+    min-height: auto;
+    justify-content: flex-start;
+  }
+  .about-heading {
+    font-size: clamp(38px, 11vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -.04em;
+  }
+  .about-sub {
+    font-size: clamp(22px, 6vw, 32px);
+    line-height: 1.18;
+  }
   .about-asterisk,
   .about-cursor,
   .about-tape-red,
@@ -1490,6 +1544,14 @@ section.gl-testimonials {
 }
 section.work {
   overflow: visible;
+}
+section.about-us::before {
+  background-image:
+    linear-gradient(rgba(10,10,10,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,10,10,.028) 1px, transparent 1px);
+  background-size: 86px 86px;
+  mix-blend-mode: multiply;
+  opacity: .45;
 }
 .section-label, .cta-label {
   color: var(--navy);
