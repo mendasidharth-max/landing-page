@@ -694,16 +694,16 @@ h2.section-title {
   z-index: 1;
 }
 .about-photo-left {
-  left: 1%;
-  top: -40px;
-  width: clamp(200px, 22vw, 340px);
+  left: -3%;
+  top: -90px;
+  width: clamp(150px, 17vw, 260px);
   height: auto;
   transform: rotate(-1deg);
 }
 .about-photo-right {
-  right: 0%;
-  top: -20px;
-  width: clamp(200px, 22vw, 340px);
+  right: -3%;
+  top: -70px;
+  width: clamp(150px, 17vw, 260px);
   height: auto;
   transform: rotate(1deg);
 }
