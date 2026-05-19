@@ -468,8 +468,23 @@ h2.section-title {
 /* ── SERVICES ───────────────────────────────────── */
 .services { background: rgba(0,0,0,0.88); color: var(--cream); padding: 0; backdrop-filter: blur(6px); }
 .services-header { padding: 64px 48px 60px; }
+.services-kicker {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
 .services .section-label { opacity: .4; }
 .services .section-title { color: var(--cream); }
+.services-intro {
+  color: rgba(255,255,255,.68);
+  font-size: clamp(16px, 1.5vw, 21px);
+  line-height: 1.65;
+  margin-top: 28px;
+  max-width: 540px;
+}
 .services-list { width: 100%; }
 .svc-row {
   border-top: 1px solid rgba(255,255,255,.1);
@@ -495,7 +510,8 @@ h2.section-title {
   transition: opacity .4s ease .1s, transform .4s ease .1s;
   pointer-events: none;
 }
-.svc-desc { font-size: 15px; line-height: 1.7; max-width: 480px; flex: 1; }
+.svc-desc { font-size: 15px; line-height: 1.7; max-width: 520px; flex: 1; }
+.svc-desc strong { display: block; font-weight: 800; color: currentColor; }
 .svc-link {
   font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em;
   white-space: nowrap; padding: 12px 28px; border: 2px solid currentColor;
