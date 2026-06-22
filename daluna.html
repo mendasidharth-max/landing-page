@@ -97,6 +97,13 @@ a { color: inherit; text-decoration: none; }
   border-radius: 8px;
   display: inline-block;
 }
+.cs-title--logo { line-height: 0; }
+.cs-logo {
+  display: block;
+  width: clamp(260px, 40vw, 460px);
+  height: auto;
+  margin: 4px 0;
+}
 .cs-lede {
   font-size: clamp(20px, 2.2vw, 28px);
   font-weight: 500;
@@ -216,6 +223,43 @@ a { color: inherit; text-decoration: none; }
   margin-top: 18px;
 }
 
+/* CONTENT / VIDEO SHOWCASE */
+.cs-reels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+.cs-reel {
+  position: relative;
+  border: 2px solid var(--navy);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--navy);
+  aspect-ratio: 16 / 9;
+}
+.cs-reel video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cs-reel-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  z-index: 2;
+  background: var(--green);
+  color: var(--navy);
+  font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  padding: 5px 11px; border-radius: 999px;
+  pointer-events: none;
+}
+.cs-reels-note {
+  font-size: 13px; font-weight: 600;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
 /* RESULTS DETAIL */
 .cs-results {
   background: var(--navy);
@@ -325,8 +369,8 @@ a { color: inherit; text-decoration: none; }
 
  <!-- HERO -->
  <section class="cs-hero">
-  <span class="cs-eyebrow"><span class="dot"></span>Case Study · 2025</span>
-  <h1 class="cs-title">Da<span class="hl">Luna</span></h1>
+  <span class="cs-eyebrow"><span class="dot"></span>Case Study · 2026</span>
+  <h1 class="cs-title cs-title--logo"><img class="cs-logo" src="images/daluna-logo.png" alt="DaLuna" width="550" height="287"></h1>
   <p class="cs-lede">From a quiet Shopify storefront to a category contender. In three months we rebuilt the brand's digital engine — social, site, influencer programme, and paid media — and turned attention into revenue.</p>
   <div class="cs-meta">
    <span>Industry · Beauty &amp; Lifestyle</span>
@@ -397,6 +441,25 @@ a { color: inherit; text-decoration: none; }
   </div>
  </section>
 
+ <!-- CONTENT SHOWCASE -->
+ <section class="cs-section">
+  <div class="cs-section-label">The content</div>
+  <h2 class="cs-h2">The kind of content that <em>did the heavy lifting.</em></h2>
+  <p class="cs-body">Every follower, sale, and ad result traced back to the creative. Here's a look at the kind of content we produced for DaLuna — built to stop the scroll and sell the product.</p>
+
+  <div class="cs-reels">
+   <div class="cs-reel">
+    <span class="cs-reel-badge">Reel 01</span>
+    <video src="videos/daluna-reel-1.mp4" poster="videos/daluna-reel-1.jpg" muted loop playsinline preload="metadata" controls></video>
+   </div>
+   <div class="cs-reel">
+    <span class="cs-reel-badge">Reel 02</span>
+    <video src="videos/daluna-reel-2.mp4" poster="videos/daluna-reel-2.jpg" muted loop playsinline preload="metadata" controls></video>
+   </div>
+  </div>
+  <p class="cs-reels-note">Clips play muted on loop when in view — tap the controls to unmute.</p>
+ </section>
+
  <!-- RESULTS -->
  <section class="cs-results">
   <div class="cs-section-label">The results</div>
@@ -444,6 +507,27 @@ a { color: inherit; text-decoration: none; }
 <footer class="cs-footer">
  &copy; Greenlight Digital · <a href="index.html" style="text-decoration: underline; opacity:.8;">Back to home</a>
 </footer>
+
+<script>
+// Autoplay the showcase reels (muted) while they're in view, pause when not.
+// The videos always have a src, so the native controls work regardless.
+(function () {
+  var reels = document.querySelectorAll('.cs-reel video');
+  if (!reels.length || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var v = entry.target;
+      if (entry.isIntersecting) {
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      } else if (!v.paused) {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.4 });
+  reels.forEach(function (v) { io.observe(v); });
+})();
+</script>
 
 </body>
 </html>
