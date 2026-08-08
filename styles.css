@@ -471,13 +471,12 @@ h2.section-title {
 
 /* ── SERVICES ───────────────────────────────────── */
 .services {
-  background: rgba(0,0,0,0.88);
+  background: #151311;
   color: var(--cream);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   padding: 0;
-  backdrop-filter: blur(6px);
 }
 .services .marquee-section {
   display: none;
@@ -1564,12 +1563,19 @@ h2.section-title {
   font-size: clamp(86px, 10vw, 166px);
   font-weight: 900;
   letter-spacing: -.06em;
-  line-height: 1.02;
+  line-height: 0.82;
   color: var(--navy);
   text-transform: uppercase;
   margin: 20px 0 0;
   filter: contrast(1.1);
   text-shadow: 0 1px 0 rgba(0,0,0,.12);
+}
+.lets-talk-heading .split-word {
+  line-height: 0.82;
+  padding-bottom: 0;
+}
+.lets-talk-heading .split-word-inner {
+  padding-bottom: 0;
 }
 .lets-talk-sub {
   font-size: clamp(16px, 1.3vw, 20px);
@@ -2322,3 +2328,59 @@ body::after {
   .custom-cursor, .target-cursor-wrapper, .cursor-dot, .cursor-blob, .cursor-label { display:none; }
 }
 
+
+/* ═══════════════════════════════════════════════════════════
+   DARK THEME — everything below the "how we grow brands"
+   (services) section. Matches the services section palette:
+   dark charcoal bg, white text, green accents, thin light lines.
+   ═══════════════════════════════════════════════════════════ */
+
+/* WORK */
+.work { background: #151311; }
+.work .section-label,
+.work .section-title { color: #FFFFFF; }
+.work-cta { background: transparent; border-color: rgba(255,255,255,.32); color: #FFFFFF; }
+.work-cta:hover { background: #FFFFFF; color: #151311; }
+.featured-card { border: 1px solid rgba(255,255,255,.12); }
+
+/* STATS */
+.stats { background: #151311; }
+.stat-num { color: var(--green); }
+.stat-label { color: #FFFFFF; }
+
+/* TESTIMONIALS */
+.gl-testimonials {
+  --gl-ink: #FFFFFF;
+  --gl-muted: rgba(255,255,255,.6);
+  --gl-dark: #FFFFFF;
+  background: #151311;
+}
+.gl-lime .gl-quote,
+.gl-mint .gl-quote,
+.gl-cream .gl-quote {
+  background: #1E1B17;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.gl-avatar { border-color: rgba(255,255,255,.3); }
+
+/* LET'S TALK */
+.lets-talk-section {
+  background: #151311;
+}
+.lets-talk-label { color: #FFFFFF; }
+.lets-talk-heading { color: #FFFFFF; text-shadow: none; }
+.lets-talk-sub { color: rgba(255,255,255,.72); }
+.lets-talk-section .lets-talk-email {
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.2);
+  color: #FFFFFF;
+}
+.lets-talk-actions .lets-talk-start {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--navy);
+}
+.lets-talk-actions .lets-talk-start::after { display: none; }
+
+/* FOOTER — match the unified dark so there is no seam */
+footer { background: #151311; }

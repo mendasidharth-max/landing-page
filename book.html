@@ -259,6 +259,33 @@ body {
   .bcheckboxes { grid-template-columns: 1fr; }
   .book-indicators { display: none; }
 }
+
+/* ── DARK THEME — matches landing-page services section ── */
+body { background: #151311; color: #FFFFFF; }
+.book-nav { background: rgba(21,19,17,.9); border-bottom-color: rgba(255,255,255,.08); }
+.book-nav-back { color: #FFFFFF; }
+.book-left { background: #0E0E0C; }
+.bstep-heading { color: #FFFFFF; }
+.bstep-sub { color: rgba(255,255,255,.5); }
+.bfield label { color: #FFFFFF; }
+.bfield input {
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.16);
+  color: #FFFFFF;
+}
+.bfield input::placeholder { color: rgba(255,255,255,.35); }
+.bfield input:focus { border-color: var(--green); box-shadow: 0 0 0 4px rgba(117,252,150,.12); }
+.bcheck, .bradio {
+  background: rgba(255,255,255,.04);
+  border-color: rgba(255,255,255,.14);
+  color: #FFFFFF;
+}
+.bcheck-box, .bradio-dot { border-color: rgba(255,255,255,.3); }
+.bcheck:has(input:checked) { border-color: var(--green); background: rgba(117,252,150,.1); }
+.bradio:has(input:checked) { border-color: var(--green); background: rgba(117,252,150,.08); }
+.bradio input:checked ~ .bradio-dot { border-color: var(--green); background: var(--green); box-shadow: inset 0 0 0 3px #151311; }
+.btn-back { border-color: rgba(255,255,255,.24); color: #FFFFFF; }
+.btn-back:hover { border-color: #FFFFFF; background: rgba(255,255,255,.06); }
 </style>
 </head>
 <body>
